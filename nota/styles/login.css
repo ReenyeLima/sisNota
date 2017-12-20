@@ -6,7 +6,7 @@
     font-family: 'Ubuntu', sans-serif;
 }
 body {
-    background: url(images/bgLogin.jpg);
+    background: url("../img/teste3.jpg");
     background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;

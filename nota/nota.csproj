@@ -19,6 +19,8 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <Use64BitIISExpress />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -68,19 +70,18 @@
   <ItemGroup>
     <Content Include="admin.aspx" />
     <Content Include="home.aspx" />
-    <Content Include="images\bgLogin.jpg" />
-    <Content Include="images\consultag.png" />
-    <Content Include="images\enviar.png" />
-    <Content Include="images\info.png" />
-    <Content Include="images\infoblue2.png" />
-    <Content Include="images\opaco2.png" />
-    <Content Include="images\situacao2.png" />
-    <Content Include="images\teste.png" />
-    <Content Include="images\up2.png" />
+    <Content Include="img\consultag.png" />
+    <Content Include="img\enviar.png" />
+    <Content Include="img\info.png" />
+    <Content Include="img\infoblue2.png" />
+    <Content Include="img\opaco2.png" />
+    <Content Include="img\situacao2.png" />
+    <Content Include="img\teste.png" />
+    <Content Include="img\teste3.jpg" />
+    <Content Include="img\up2.png" />
     <Content Include="js\JavaScript.js" />
     <Content Include="js\jquery-3.2.1.min.js" />
     <Content Include="styles\login.css" />
-    <Content Include="styles\Style2.css" />
     <Content Include="styles\StyleSheet1.css" />
     <Content Include="Web.config" />
   </ItemGroup>
