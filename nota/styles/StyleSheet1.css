@@ -1,0 +1,172 @@
+﻿/*fundo com logo*/
+* {
+    padding: 0px;
+    margin: 0px;
+}
+body {
+    background-color: #eaeef7;
+    width: 100%;
+    height: 100%;
+    background-image: url(images/opaco2.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-position-y: 300px;
+}
+ 
+/*menu*/
+#nav {
+    width: 23.08%;
+    height:110px;
+    background: #f9f9f9;
+    float: left;
+    margin-left: 36%;
+    position: absolute;
+    z-index:9999;
+}
+
+    #nav ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        width: 100%;
+        float: left;
+    }
+
+        #nav ul li {
+            float: left;
+            font: 16px arial;
+        }
+        #nav li ul {
+             position: absolute;
+             left: 150;
+             top: 60;
+             display: none;
+}
+
+            #nav ul li a {
+                color: #888;
+                text-decoration: none;
+                padding: 20px;
+                display: block;
+            }
+
+            #nav ul li:hover {
+                background: #eee;
+            }
+
+            #nav ul li .enviar {
+                background: url(images/enviar.png) no-repeat center;
+                float: left;
+                width: 45%;
+                padding: 30px;
+                margin-bottom: 15px;
+            }
+
+            #nav ul li .info {
+                background: url(images/info.png) no-repeat center;
+                float: left;
+                width: 70%;
+                padding: 30px;
+                margin-bottom: 15px;
+            }
+
+            #nav ul li .consulta {
+                background: url(images/situacao2.png) no-repeat center;
+                float: left;
+                width: 45%;
+                padding: 30px;
+                margin-bottom: 15px;
+                
+            }
+   
+/*fundo da tela com menu View 1*/
+#enviararq {
+    font-family: 'Josefin Sans', sans-serif;
+    margin-top: 100px;
+    width: 100%;
+    margin-left: 350px;
+    padding: 140px;
+    text-align: center;
+    background-color: #eaeef7;
+    opacity: 0.9;
+}
+#view {
+    position: absolute;
+   }
+/*botao upload*/
+.upload-btn-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.btn {
+    border: 2px solid gray;
+    color: gray;
+    background-color: white;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
+/*batao de enviar*/
+
+#uploadbutton {
+    font-size: 17px;
+    border: 2px solid gray;
+    color: gray;
+    background-color: white;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    
+}
+/*view 2*/
+#info {
+   font-family: 'Josefin Sans', sans-serif;
+    margin-top: 200px;
+    margin-left: 250px;
+    padding: 50px;
+    width: 100%;
+    text-align: center;
+    background-color: #eaeef7;
+    opacity: 0.9;
+}
+
+#btSalva, #btCancela {
+    font-size: 13px;
+    border: 2px solid gray;
+    color: gray;
+    background-color: white;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+/*View 3*/
+#consulta {
+    font-family: 'Josefin Sans', sans-serif;
+    margin-top: 150px;
+    width: 50%;
+    margin-left: 620px;
+    padding: 80px;
+    background-color: #eaeef7;
+    opacity: 0.9;
+}
+#btConsulta {
+    font-size: 13px;
+    border: 2px solid gray;
+    color: gray;
+    background-color: white;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    position:center;
+}

@@ -1,0 +1,44 @@
+﻿html {
+    display: block;
+    width: 100%;
+    height: 100%;
+    width: 100%;
+    font-family: 'Ubuntu', sans-serif;
+}
+body {
+    background: url(images/bgLogin.jpg);
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    width: 100%;
+}
+#tudo {
+    border-style: none;
+    border-color: #dbd0d0;
+    border-width: thin;
+    border: none;
+    background-color: rgba(37, 38, 35,0.4);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -190px;
+    margin-top: -150px;
+    padding: 50px 80px 50px 80px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    box-shadow: 1px 1px 3px #000;
+    -webkit-box-shadow: 1px 1px 3px #000;
+    -moz-box-shadow: 1px 1px 3px #000;
+}
+input {
+    border:none;
+    border-style: none;
+    }
+input:focus {
+    outline: none;
+}
