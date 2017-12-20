@@ -3,6 +3,7 @@
     padding: 0px;
     margin: 0px;
 }
+
 body {
     background-color: #eaeef7;
     width: 100%;
@@ -12,16 +13,16 @@ body {
     background-position: center;
     background-position-y: 300px;
 }
- 
+
 /*menu*/
 #nav {
     width: 23.08%;
-    height:110px;
+    height: 110px;
     background: #f9f9f9;
     float: left;
     margin-left: 36%;
     position: absolute;
-    z-index:9999;
+    z-index: 9999;
 }
 
     #nav ul {
@@ -36,49 +37,49 @@ body {
             float: left;
             font: 16px arial;
         }
-        #nav li ul {
-             position: absolute;
-             left: 150;
-             top: 60;
-             display: none;
-}
 
-            #nav ul li a {
-                color: #888;
-                text-decoration: none;
-                padding: 20px;
-                display: block;
-            }
+    #nav li ul {
+        position: absolute;
+        left: 150;
+        top: 60;
+        display: none;
+    }
 
-            #nav ul li:hover {
-                background: #eee;
-            }
+    #nav ul li a {
+        color: #888;
+        text-decoration: none;
+        padding: 20px;
+        display: block;
+    }
 
-            #nav ul li .enviar {
-                background: url(images/enviar.png) no-repeat center;
-                float: left;
-                width: 45%;
-                padding: 30px;
-                margin-bottom: 15px;
-            }
+    #nav ul li:hover {
+        background: #eee;
+    }
 
-            #nav ul li .info {
-                background: url(images/info.png) no-repeat center;
-                float: left;
-                width: 70%;
-                padding: 30px;
-                margin-bottom: 15px;
-            }
+    #nav ul li .enviar {
+        background: url(images/enviar.png) no-repeat center;
+        float: left;
+        width: 45%;
+        padding: 30px;
+        margin-bottom: 15px;
+    }
 
-            #nav ul li .consulta {
-                background: url(images/situacao2.png) no-repeat center;
-                float: left;
-                width: 45%;
-                padding: 30px;
-                margin-bottom: 15px;
-                
-            }
-   
+    #nav ul li .info {
+        background: url(images/info.png) no-repeat center;
+        float: left;
+        width: 70%;
+        padding: 30px;
+        margin-bottom: 15px;
+    }
+
+    #nav ul li .consulta {
+        background: url(images/situacao2.png) no-repeat center;
+        float: left;
+        width: 45%;
+        padding: 30px;
+        margin-bottom: 15px;
+    }
+
 /*fundo da tela com menu View 1*/
 #enviararq {
     font-family: 'Josefin Sans', sans-serif;
@@ -90,9 +91,10 @@ body {
     background-color: #eaeef7;
     opacity: 0.9;
 }
+
 #view {
     position: absolute;
-   }
+}
 /*botao upload*/
 .upload-btn-wrapper {
     position: relative;
@@ -127,11 +129,10 @@ body {
     padding: 8px 20px;
     border-radius: 8px;
     font-weight: bold;
-    
 }
 /*view 2*/
 #info {
-   font-family: 'Josefin Sans', sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
     margin-top: 200px;
     margin-left: 250px;
     padding: 50px;
@@ -160,6 +161,7 @@ body {
     background-color: #eaeef7;
     opacity: 0.9;
 }
+
 #btConsulta {
     font-size: 13px;
     border: 2px solid gray;
@@ -168,5 +170,5 @@ body {
     padding: 8px 20px;
     border-radius: 8px;
     font-weight: bold;
-    position:center;
+    position: center;
 }
