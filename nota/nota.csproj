@@ -70,6 +70,7 @@
   <ItemGroup>
     <Content Include="admin.aspx" />
     <Content Include="home.aspx" />
+    <Content Include="img\boneco4.png" />
     <Content Include="img\consultag.png" />
     <Content Include="img\enviar.png" />
     <Content Include="img\info.png" />
@@ -93,6 +94,7 @@
     <Compile Include="admin.aspx.designer.cs">
       <DependentUpon>admin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="data.cs" />
     <Compile Include="funcao.cs" />
     <Compile Include="home.aspx.cs">
       <DependentUpon>home.aspx</DependentUpon>

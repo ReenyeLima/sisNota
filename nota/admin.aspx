@@ -4,6 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+
     <meta charset="utf-8" />
     <title>Nota fiscal eletronica</title>
     <link rel="stylesheet" href="styles/StyleSheet1.css" />
@@ -11,6 +12,7 @@
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/JavaScript.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|PT+Sans+Narrow" rel="stylesheet"/>
+    
 </head>
 <body>
     <form id="tudo" runat="server">
@@ -40,7 +42,9 @@
                                 <input type="file" name="myfile" /><br />
                             </div>
 
-                            <center>  <asp:Button  ID="uploadbutton" runat="server" CssClass="btClass" Text="&#x21EA; Enviar" /> </center>
+                            <center>  <br /><asp:Button  ID="uploadbutton" runat="server" CssClass="btClass" Text="&#x21EA; Enviar" />
+
+                            </center>
 
                         </form>
                     </div>
@@ -53,8 +57,7 @@
                         <h2>Informações da empresa
                             <img src="img/infoblue2.png" /></></h2>
                         <br />
-                        <br />
-
+                        
                         <form id="infoemp">
                             <table style="width: 100%;">
                                 <tr>
@@ -156,12 +159,81 @@
                 <asp:View ID="View3" runat="server">
 
                     <div id="consulta">
-                        <h1>Consultas
+                   <center>     <h1>Consultas
                             <img src="img/consultag.png" /></h1>
-                        <br />
-                        <asp:Label ID="nfse" Text="Tipos de consultas:" runat="server"></asp:Label><select id="Select1">
-                            <>
-                            <option>Situação de lote                             
+                        <br /></center>
+                        
+                         <div id="situacaolote">
+                             <h3>Situação do lote</h3><br />
+                             <td>
+                                        <asp:Label ID="Label11" runat="server" Text="Prestador: "></asp:Label><br />
+                                    </td>
+                                    <td align="left">
+                                        <asp:TextBox ID="TextBox11" runat="server"></asp:TextBox>
+                                    </td><br />
+                             <td>
+                                        <asp:Label ID="Label12" runat="server" Text="Protocolo:"></asp:Label><br />
+                                    </td>
+                                    <td align="left">
+                                        <asp:TextBox ID="TextBox15" runat="server"></asp:TextBox>
+                                    </td>
+                             <asp:Button ID="btConsultaLote" runat="server" Text="&#x1f50d;Consultar" />
+                        </div>
+
+                        <div id="nfsporrps">
+                             <h3>NFS-e por RPS</h3> <br />                         
+                                    <td>
+                                        <asp:Label ID="Label13" runat="server" Text="Identificação do RPS: "></asp:Label><br />
+                                    </td>
+                                    <td align="left">
+                                        <asp:TextBox ID="TextBox12" runat="server"></asp:TextBox>
+                                    </td><br />
+                             <td>
+                                        <asp:Label ID="Label14" runat="server" Text="Prestador:"></asp:Label><br />
+                                    </td>
+                                    <td align="left">
+                                        <asp:TextBox ID="TextBox16" runat="server"></asp:TextBox>
+                                    </td>
+                            <asp:Button ID="btConsultaNfseRps" runat="server" Text="&#x1f50d;Consultar" />
+                        </div>
+                         <div id="loterps">
+                             <h3>Lote de RPS</h3> <br>         
+                                    <td>
+                                        <asp:Label ID="Label15" runat="server" Text="Prestador: "></asp:Label><br />
+                                    </td>
+                                    <td align="left">
+                                        <asp:TextBox ID="TextBox13" runat="server"></asp:TextBox>
+                                    </td><br />
+                             <td>
+                                        <asp:Label ID="Label16" runat="server" Text="Protocolo:"></asp:Label><br />
+                                    </td>
+                                    <td align="left">
+                                        <asp:TextBox ID="TextBox17" runat="server"></asp:TextBox>
+                                    </td>
+                             <asp:Button ID="btConsultaloteRPS" runat="server" Text="&#x1f50d;Consultar" />
+                        </div>
+                        <div id="nfse">
+                             <h3>NFS-e </h3>   <br />                   
+                            <td>
+                                        <asp:Label ID="Label17" runat="server" Text="Prestador: "></asp:Label><br />
+                                    </td>
+                                    <td align="left">
+                                        <asp:TextBox ID="TextBox14" runat="server"></asp:TextBox>
+                                    </td><br />
+                             <td>
+                                        <asp:Label ID="Label18" runat="server" Text="Número NFS-e:"></asp:Label><br />
+                                    </td>
+                                    <td align="left">
+                                        <asp:TextBox ID="TextBox18" runat="server"></asp:TextBox>
+                                    </td>
+                            <asp:Button ID="btConsultaNfse" runat="server" Text="&#x1f50d;Consultar" />
+                            
+                        </div>
+
+                       
+                      <!--  <asp:Label ID="nfse" Text="Tipos de consultas:" runat="server"></asp:Label><select id="Select1">
+                            
+                            <option>  Situação de lote                      
                             </option>
                             <option>NFS-e por RPS                             
                             </option>
@@ -169,13 +241,13 @@
                             </option>
                             <option>NFS-e
                             </option>
-
+                                                        
                         </select>
 
 
                         <asp:Button CssClass="btClass" ID="btConsulta" runat="server" Text="&#x1f50d; Consultar" />
-                    </div>
-
+                    </div>-->
+                        
                 </asp:View>
             </asp:MultiView>
         </div>

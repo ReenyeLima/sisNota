@@ -2,6 +2,7 @@
 * {
     padding: 0px;
     margin: 0px;
+    overflow:visible;
 }
 
 body {
@@ -12,6 +13,7 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-position-y: 300px;
+    overflow:scroll;
 }
 
 /*menu*/
@@ -85,11 +87,13 @@ body {
     font-family: 'Josefin Sans', sans-serif;
     margin-top: 100px;
     width: 100%;
-    margin-left: 350px;
+    margin-left: -10%;
     padding: 140px;
     text-align: center;
     background-color: #eaeef7;
     opacity: 0.9;
+    position:fixed;    
+    
 }
 
 #view {
@@ -129,17 +133,20 @@ body {
     padding: 8px 20px;
     border-radius: 8px;
     font-weight: bold;
+    
 }
 /*view 2*/
 #info {
     font-family: 'Josefin Sans', sans-serif;
     margin-top: 200px;
-    margin-left: 250px;
+    margin-left: -5%;
     padding: 50px;
     width: 100%;
     text-align: center;
     background-color: #eaeef7;
     opacity: 0.9;
+    position:fixed;
+    
 }
 
 #btSalva, #btCancela {
@@ -154,12 +161,13 @@ body {
 /*View 3*/
 #consulta {
     font-family: 'Josefin Sans', sans-serif;
-    margin-top: 150px;
+    margin-top: 170px;
     width: 50%;
-    margin-left: 620px;
+    margin-left: 20%;
     padding: 80px;
     background-color: #eaeef7;
     opacity: 0.9;
+    position: fixed;
 }
 
 #btConsulta {
@@ -171,4 +179,82 @@ body {
     border-radius: 8px;
     font-weight: bold;
     position: center;
+    
+    
+}
+
+#situacaolote {
+    font-family: 'Josefin Sans', sans-serif;
+    border-radius: 20px;
+    padding: 10px;
+    margin-left: 80px;
+    background-color: #b8c9f2;
+    position: fixed;
+}
+#btConsultaLote {
+    font-size: 11px;
+    border: 2px solid gray;
+    color: gray;
+    background-color: white;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    position: center;
+}
+#nfsporrps {
+    font-family: 'Josefin Sans', sans-serif;
+    border-radius: 20px;
+    margin-left: 410px;
+    padding: 10px;
+    background-color: #b8c9f2;
+    position: fixed;
+}
+#btConsultaNfseRps {
+    font-size: 10px;
+    border: 2px solid gray;
+    color: gray;
+    background-color: white;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    position: center;
+}
+#loterps {
+    font-family: 'Josefin Sans', sans-serif;
+    border-radius: 20px;
+    margin-top: 160px;
+    margin-left: 80px;
+    padding: 10px;
+    background-color: #b8c9f2;
+    position: fixed;
+}
+#btConsultaloteRPS {
+    font-size: 11px;
+    border: 2px solid gray;
+    color: gray;
+    background-color: white;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    position: center;
+}
+#nfse {
+    font-family: 'Josefin Sans', sans-serif;
+    border-radius: 20px;
+    margin-left: 410px;
+    margin-top: 160px;
+    padding: 10px;
+    background-color: #b8c9f2;
+    position: fixed;
+}
+#btConsultaNfse{
+     font-size: 11px;
+    border: 2px solid gray;
+    color: gray;
+    background-color: white;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    position: center;
+
 }
