@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Drawing;
 using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace nota
 {
@@ -16,10 +13,8 @@ namespace nota
 
         protected void Page_Load(object sender, EventArgs e)
          {
-            db.conDB();
+          db.conDB("nfse");
         }
-        
-   
 
         protected void Button1_Click(object sender, EventArgs e)
         {

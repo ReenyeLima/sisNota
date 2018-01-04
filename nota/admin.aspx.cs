@@ -19,11 +19,10 @@ namespace nota
         {
 
         }
-
-        protected void uploadbutton_Click(object sender, EventArgs e)
+          protected void uploadbutton_Click(object sender, EventArgs e)
         {
 
-        }
+        }      
 
         protected void Unnamed_ServerClick(object sender, EventArgs e)
         {
@@ -41,6 +40,5 @@ namespace nota
         {
             MultiView2.ActiveViewIndex = 2;
         }
-
     }
 }

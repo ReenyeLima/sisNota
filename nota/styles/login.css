@@ -6,22 +6,22 @@
     font-family: 'Ubuntu', sans-serif;
 }
 body {
-    background: url("../img/teste3.jpg");
+    background: url("../img/logooficial2.png");
     background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
     background-position: center;
-    height: 100%;
-    width: 100%;
+    height: 98%;
+    width: 98%;
 }
 #tudo {
     border-style: none;
     border-color: #dbd0d0;
     border-width: thin;
     border: none;
-    background-color: rgba(37, 38, 35,0.4);
+    background-color: rgba(194, 215, 237,0.4);
     position: absolute;
     left: 50%;
     top: 50%;
@@ -41,4 +41,13 @@ input {
     }
 input:focus {
     outline: none;
+}
+#Button1 {
+    border: 2px solid gray;
+    color: gray;
+    background-color: white;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: bold;
 }

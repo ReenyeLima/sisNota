@@ -70,15 +70,15 @@
   <ItemGroup>
     <Content Include="admin.aspx" />
     <Content Include="home.aspx" />
-    <Content Include="img\boneco4.png" />
     <Content Include="img\consultag.png" />
     <Content Include="img\enviar.png" />
     <Content Include="img\info.png" />
     <Content Include="img\infoblue2.png" />
-    <Content Include="img\opaco2.png" />
+    <Content Include="img\logooficial2.png" />
+    <Content Include="img\opaco.png" />
+    <Content Include="img\secreto.png" />
     <Content Include="img\situacao2.png" />
-    <Content Include="img\teste.png" />
-    <Content Include="img\teste3.jpg" />
+    <Content Include="img\testelogo.png" />
     <Content Include="img\up2.png" />
     <Content Include="js\JavaScript.js" />
     <Content Include="js\jquery-3.2.1.min.js" />

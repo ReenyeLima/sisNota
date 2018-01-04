@@ -22,7 +22,7 @@
             <div class="wrap">
 
                 <h1>
-                    <center>LOGIN</center>
+                    <center>LOGIN<img src="img/secreto.png" /></center>
                 </h1>
                 
                 <div>

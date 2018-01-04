@@ -31,28 +31,33 @@
         <div id="view">
             <asp:MultiView ID="MultiView2" runat="server" OnActiveViewChanged="MultiView2_ActiveViewChanged">
                 <asp:View ID="View1" runat="server">
-
+                    
                     <div id="enviararq">
-                        <form id="upload">
-
+                       <div id="upload">
+                           
                             <h1>Enviar arquivos</h1>
-                            <img src="img/up2.png" /></><br />
+                            <img src="img/up2.png" /></><br /> 
+
                             <div class="upload-btn-wrapper">
-                                <button class="btn">Escolha um arquivo</button>
-                                <input type="file" name="myfile" /><br />
+                                <button class="btn"  >Escolha um arquivo</button>
+                                <input  type="file"  name="myfile" /><br />                               
                             </div>
+                         
+                           </div>
+                        <center>  <br />
+                           <asp:Button  ID="uploadbutton" runat="server"  CssClass="btClass"  Text="&#x21EA; Enviar" /> 
+                            </center> 
+                                
 
-                            <center>  <br /><asp:Button  ID="uploadbutton" runat="server" CssClass="btClass" Text="&#x21EA; Enviar" />
-
-                            </center>
-
-                        </form>
                     </div>
+                 
+                    
                 </asp:View>
 
 
                 <asp:View ID="View2" runat="server">
                     <div id="info">
+
 
                         <h2>Informações da empresa
                             <img src="img/infoblue2.png" /></></h2>
@@ -157,7 +162,6 @@
                 </asp:View>
 
                 <asp:View ID="View3" runat="server">
-
                     <div id="consulta">
                    <center>     <h1>Consultas
                             <img src="img/consultag.png" /></h1>
@@ -229,26 +233,8 @@
                             <asp:Button ID="btConsultaNfse" runat="server" Text="&#x1f50d;Consultar" />
                             
                         </div>
-
-                       
-                      <!--  <asp:Label ID="nfse" Text="Tipos de consultas:" runat="server"></asp:Label><select id="Select1">
-                            
-                            <option>  Situação de lote                      
-                            </option>
-                            <option>NFS-e por RPS                             
-                            </option>
-                            <option>Lote de RPS                             
-                            </option>
-                            <option>NFS-e
-                            </option>
-                                                        
-                        </select>
-
-
-                        <asp:Button CssClass="btClass" ID="btConsulta" runat="server" Text="&#x1f50d; Consultar" />
-                    </div>-->
-                        
-                </asp:View>
+                                                                     
+                       </asp:View>
             </asp:MultiView>
         </div>
     </form>
