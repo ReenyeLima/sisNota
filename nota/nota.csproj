@@ -96,6 +96,7 @@
     </Compile>
     <Compile Include="data.cs" />
     <Compile Include="funcao.cs" />
+    <Compile Include="funcoes.cs" />
     <Compile Include="home.aspx.cs">
       <DependentUpon>home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

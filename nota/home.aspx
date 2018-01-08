@@ -43,7 +43,7 @@
                         </asp:TextBox>
                         
                     </div>
-                    <div></div>
+                  
                     <br />
                         <!--  Esqueceu sua senha  --> 
                     <center><a href="" class="forgot_link">Esqueceu sua senha?</a></center>

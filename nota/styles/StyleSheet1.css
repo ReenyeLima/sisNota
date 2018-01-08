@@ -116,7 +116,7 @@ body {
 }
 
 .upload-btn-wrapper input[type=file] {
-    font-size: 20px;
+    font-size: 30px;
     position: absolute;
     left: 0;
     top: 0;
@@ -248,8 +248,8 @@ body {
     background-color: #b8c9f2;
     position: fixed;
 }
-#btConsultaNfse{
-     font-size: 11px;
+#btConsultaNfse {
+    font-size: 11px;
     border: 2px solid gray;
     color: gray;
     background-color: white;
@@ -257,5 +257,11 @@ body {
     border-radius: 8px;
     font-weight: bold;
     position: center;
-   
+}
+#rodape {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size:15px;
+    position: absolute;
+    display: block;
+    margin-top: 60%;
 }

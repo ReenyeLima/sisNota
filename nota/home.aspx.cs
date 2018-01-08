@@ -38,12 +38,6 @@ namespace nota
                     break;
 
                 default:
-
-             /*
-              *string senhamd5 = funcao.md5(senha.Text);
-
-             if (usuario.Text.Equals("camila") && senhamd5.Equals("202cb962ac59075b964b07152d234b70"))
-             {*/
             
                     HttpCookie ckemp = new HttpCookie("cdemp");
                     ckemp.Name = "cdemp";

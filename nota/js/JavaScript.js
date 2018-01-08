@@ -1,4 +1,4 @@
-﻿    < script >
+﻿< script >
     $(function () {
         var nav = $('#nav');
         $(window).scroll(function () {

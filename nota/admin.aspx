@@ -37,19 +37,21 @@
                            
                             <h1>Enviar arquivos</h1>
                             <img src="img/up2.png" /></><br /> 
-
+                           
                             <div class="upload-btn-wrapper">
                                 <button class="btn"  >Escolha um arquivo</button>
-                                <input  type="file"  name="myfile" /><br />                               
+                                <asp:FileUpload  type="file" id="myfile" name="myfile" runat="server"/><br />                               
                             </div>
-                         
+                                           
                            </div>
-                        <center>  <br />
-                           <asp:Button  ID="uploadbutton" runat="server"  CssClass="btClass"  Text="&#x21EA; Enviar" /> 
-                            </center> 
-                                
 
-                    </div>
+                       
+                            <center>  <br />
+                                
+                           <asp:Button  ID="uploadbutton" runat="server" CssClass="btClass" Text="&#x21EA; Enviar" /> 
+                            </center> 
+                   
+                                            </div>
                  
                     
                 </asp:View>
@@ -139,7 +141,7 @@
 
                                 <tr>
                                     <td>
-                                        <asp:Label ID="lb10" runat="server" Text="Formato de Exportacao"></asp:Label><br />
+                                        <asp:Label ID="lb10" runat="server" Text="Formato de Exportação"></asp:Label><br />
                                     </td>
                                     <td align="left">
                                         <asp:DropDownList runat="server" ID="listaLayout"></asp:DropDownList>
@@ -235,8 +237,11 @@
                         </div>
                                                                      
                        </asp:View>
+              
             </asp:MultiView>
+
         </div>
+         
     </form>
 </body>
 </html>
