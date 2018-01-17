@@ -16,7 +16,6 @@
 </head>
 <body>
     <form id="tudo" runat="server">
-
         <div id="nav">
             <ul>
 
@@ -28,12 +27,13 @@
 
 
         </div>
+
         <div id="view">
             <asp:MultiView ID="MultiView2" runat="server" OnActiveViewChanged="MultiView2_ActiveViewChanged">
                 <asp:View ID="View1" runat="server">
                     
                     <div id="enviararq">
-                       <div id="upload">
+                       
                            
                             <h1>Enviar arquivos</h1>
                             <img src="img/up2.png" /></><br /> 
@@ -42,17 +42,10 @@
                                 <button class="btn"  >Escolha um arquivo</button>
                                 <asp:FileUpload  type="file" id="myfile" name="myfile" runat="server"/><br />                               
                             </div>
-                                           
-                           </div>
-
-                       
-                            <center>  <br />
-                                
-                           <asp:Button  ID="uploadbutton" runat="server" CssClass="btClass" Text="&#x21EA; Enviar" /> 
-                            </center> 
-                   
-                                            </div>
-                 
+                                           <br /><br />
+                           
+                        <asp:Button ID="upbutton" OnClick="upbutton_Click" runat="server" Text="&#x21EA; Enviar" />
+                    </div>
                     
                 </asp:View>
 
@@ -165,10 +158,10 @@
 
                 <asp:View ID="View3" runat="server">
                     <div id="consulta">
-                   <center>     <h1>Consultas
-                            <img src="img/consultag.png" /></h1>
-                        <br /></center>
-                        
+                   <center>     
+                    <h1> Consultas  <img src="img/consultag.png" /> </h1>
+                   </center>
+
                          <div id="situacaolote">
                              <h3>Situação do lote</h3><br />
                              <td>
@@ -234,8 +227,7 @@
                                     </td>
                             <asp:Button ID="btConsultaNfse" runat="server" Text="&#x1f50d;Consultar" />
                             
-                        </div>
-                                                                     
+                        </div>        </div>                                             
                        </asp:View>
               
             </asp:MultiView>
@@ -243,5 +235,6 @@
         </div>
          
     </form>
+
 </body>
 </html>

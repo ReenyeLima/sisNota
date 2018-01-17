@@ -3,9 +3,9 @@
         var nav = $('#nav');
         $(window).scroll(function () {
             if ($(this).scrollTop() > 150) {
-                nav.addClass("menuFixo");
+                nav.addClass("view");
             } else {
-                nav.removeClass("menuFixo");
+                nav.removeClass("view");
             }
         });
     });

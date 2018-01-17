@@ -19,7 +19,7 @@ namespace nota
 
         data db = new data();
 
-        //file fl = new file();
+        file fl = new file();
 
         char separetor = Path.DirectorySeparatorChar;
 

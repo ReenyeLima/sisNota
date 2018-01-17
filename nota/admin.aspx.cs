@@ -11,7 +11,6 @@ namespace nota
     public partial class admin : System.Web.UI.Page
     {
         funcoes fnc = new funcoes();
-        funcao fl = new funcao();
         public void MsgBox(String ex)
 
         {
@@ -45,35 +44,6 @@ namespace nota
         {
 
         }
-        protected void uploadbutton_Click(object sender, EventArgs e)
-        {
-              if (myfile.HasFile)
-                        {
-
-                            try
-                            {
-                                int linhasret = 0;
-                                string filename = Path.GetFileName(myfile.FileName);
-                                DirectoryInfo di = new DirectoryInfo(Server.MapPath("~/uploads/"));
-                                if (!di.Exists)
-                                {
-                                    di.Create();
-                                }
-                                myfile.SaveAs(Server.MapPath("~/uploads/") + filename);
-
-                                linhasret = fnc.salva_banco(Server.MapPath("~/uploads/") + filename, codemp);
-                                 MsgBox("Arquivo enviado com sucesso!");
-                }
-                catch (Exception ex)
-
-                {
-                                MsgBox("Falha no Upload");
-                }
-
-                        }
-
-        }
-
         protected void Unnamed_ServerClick(object sender, EventArgs e)
         {
             MultiView2.ActiveViewIndex = 0;
@@ -90,5 +60,34 @@ namespace nota
         {
             MultiView2.ActiveViewIndex = 2;
         }
+
+        protected void upbutton_Click(object sender, EventArgs e)
+        {
+            if (myfile.HasFile)
+            {
+
+                try
+                {
+                    int linhasret = 0;
+                    string filename = Path.GetFileName(myfile.FileName);
+                    DirectoryInfo di = new DirectoryInfo(Server.MapPath("~/uploads/"));
+                    if (!di.Exists)
+                    {
+                        di.Create();
+                    }
+                    myfile.SaveAs(Server.MapPath("~/uploads/") + filename);
+
+                    linhasret = fnc.salva_banco(Server.MapPath("~/uploads/") + filename, codemp);
+                    MsgBox("Arquivo enviado com sucesso!");
+                }
+                catch (Exception ex)
+
+                {
+                    MsgBox("Falha no Upload");
+                }
+            }
+                }
+
+            }
+        
     }
-}
