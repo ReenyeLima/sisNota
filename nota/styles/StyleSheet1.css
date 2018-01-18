@@ -1,16 +1,15 @@
 ﻿/*fundo com logo*/
 * {
-    padding: 0px;
-    margin: 0px;
+    padding: 0%;
+    margin: 0%;
 }
 body {
     background-color: #eaeef7;
-    
     background-image: url("../img/opaco.png");
     background-repeat: no-repeat;
     background-position: center;
     background-position-y: 300px;
-    overflow:scroll;
+   
 }
 
 /*menu*/
@@ -193,7 +192,7 @@ body {
     font-size: 11px;
     border: 2px solid gray;
     color: gray;
-    background-color: white;
+    background-color: white; 
     padding: 8px 20px;
     border-radius: 8px;
     font-weight: bold;

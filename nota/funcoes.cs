@@ -4973,7 +4973,34 @@ namespace nota
 
 
         }
+/* LER ARQUIVO AURY*/
+        
+             public void carrega_aury()
+                {
+            try
+            { 
+                StreamReader sReaderAury = new StreamReader(@"C:\Users\Svias\source\repos\sisNota\nota\uploads\aury.txt");
+                while (!sReaderAury.EndOfStream)
+                {
+                    string linha = sReaderAury.ReadLine();
 
-    }
+                }
+            }
+            catch (Exception e)
+            {
 
-}
+                e.ToString();
+
+            }
+              
+
+             reader.Close();
+                }
+
+
+
+            }
+        }
+        
+    
+
