@@ -7,6 +7,7 @@ namespace nota
 {
     public class Class1
     {
+
       
     }
 }
