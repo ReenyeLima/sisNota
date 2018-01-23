@@ -8,11 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace nota.ServiceReference1 {
+namespace nota.ServiceReference2 {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://homologacao.ginfes.com.br", ConfigurationName="ServiceReference1.ServiceGinfesImpl")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://homologacao.ginfes.com.br", ConfigurationName="ServiceReference2.ServiceGinfesImpl")]
     public interface ServiceGinfesImpl {
         
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
@@ -125,12 +125,12 @@ namespace nota.ServiceReference1 {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface ServiceGinfesImplChannel : nota.ServiceReference1.ServiceGinfesImpl, System.ServiceModel.IClientChannel {
+    public interface ServiceGinfesImplChannel : nota.ServiceReference2.ServiceGinfesImpl, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ServiceGinfesImplClient : System.ServiceModel.ClientBase<nota.ServiceReference1.ServiceGinfesImpl>, nota.ServiceReference1.ServiceGinfesImpl {
+    public partial class ServiceGinfesImplClient : System.ServiceModel.ClientBase<nota.ServiceReference2.ServiceGinfesImpl>, nota.ServiceReference2.ServiceGinfesImpl {
         
         public ServiceGinfesImplClient() {
         }

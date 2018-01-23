@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="5zWUl4NXTlObgJEqc+QqEVkSf4E=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="n8GvxVZQO6at16FcgCdcchZCdlc=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="ServiceGinfesImplBinding">
       <properties>
@@ -221,7 +221,7 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="ServiceGinfesImplPort" contract="ServiceReference1.ServiceGinfesImpl" bindingType="basicHttpBinding" address="https://homologacao.ginfes.com.br//ServiceGinfesImpl" bindingConfiguration="ServiceGinfesImplBinding">
+    <endpoint name="ServiceGinfesImplPort" contract="ServiceReference2.ServiceGinfesImpl" bindingType="basicHttpBinding" address="https://homologacao.ginfes.com.br//ServiceGinfesImpl" bindingConfiguration="ServiceGinfesImplBinding">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>https://homologacao.ginfes.com.br//ServiceGinfesImpl</serializedValue>
@@ -236,7 +236,7 @@
           <serializedValue>ServiceGinfesImplBinding</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>ServiceReference1.ServiceGinfesImpl</serializedValue>
+          <serializedValue>ServiceReference2.ServiceGinfesImpl</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>
