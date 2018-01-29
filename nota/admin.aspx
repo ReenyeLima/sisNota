@@ -176,7 +176,7 @@
                                     <td align="left">
                                         <asp:TextBox ID="TextBox15" runat="server"></asp:TextBox>
                                     </td>
-                             <asp:Button ID="btConsultaLote" runat="server" Text="&#x1f50d;Consultar" />
+                             <asp:Button ID="btConsultaLote" OnClick="btConsultaLote_Click" runat="server" Text="&#x1f50d;Consultar" />
                         </div>
 
                         <div id="nfsporrps">

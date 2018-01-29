@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace nota
 {
-    
+
     public class funcoes
     {
 
@@ -46,21 +46,21 @@ namespace nota
             prog = prg;
 
         }
-        
+
         public int getProg()
         {
 
             return prog;
 
         }
-                
+
         public int salva_banco(string path, string codemp)
         {
 
             int conta = 0;
 
             //string path = Path.GetDirectoryName(System.AppDomain.CurrentDomain.BaseDirectory.ToString()) + Path.DirectorySeparatorChar + "uploads" + Path.DirectorySeparatorChar + fname;
-           
+
             string line = "";
 
             string[] file = path.Split(separetor);
@@ -78,7 +78,7 @@ namespace nota
             string file_name_backup = s + file_name_original;
 
             string cod_sis = "";
-            
+
             query = "INSERT INTO nf_controle (data_importacao, nome_ori, nome_bkp, cod_emp) VALUES (getdate(), '" + file_name_original + "', '" + file_name_backup + "', " + codemp + ")";
 
             int ret = db.execQuery(query);
@@ -278,7 +278,7 @@ namespace nota
             Boolean ret = false;
 
             string path_exp = Path.GetDirectoryName(System.AppDomain.CurrentDomain.BaseDirectory.ToString()) + Path.DirectorySeparatorChar + "importacoes" + Path.DirectorySeparatorChar + cod_emp + Path.DirectorySeparatorChar;
-            
+
             NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
             nfi.NumberGroupSeparator = ".";
 
@@ -323,7 +323,7 @@ namespace nota
                 query = "SELECT * FROM dados_empresa INNER JOIN empresa ON empresa.codigo = dados_empresa.codigo_empresa WHERE codigo_empresa = '" + cod_emp + "'";
 
                 SqlDataReader info = db.rQuery(query);
-                
+
                 if (info.HasRows)
                 {
 
@@ -401,7 +401,7 @@ namespace nota
                     {
 
                         nfse = 0;
-                        
+
                         var settings = new XmlWriterSettings
                         {
                             Encoding = new UTF8Encoding(false),
@@ -538,7 +538,7 @@ namespace nota
                                     string texto = desc + "\r\nVal. Aprox. Tributos R$ " +
                                         ((double.Parse(valServ) / 100) * 0.1788).ToString("0.00").Replace(',', '.')
                                         + ", correspondente a alíquota de (16,46%) Fonte: IBPT.";
- 
+
                                     if (tpDoc.Equals("2"))
                                     {
 
@@ -801,7 +801,7 @@ namespace nota
                 }
 
                 ret = true;
-                
+
             }
             catch (Exception ex)
             {
@@ -813,7 +813,7 @@ namespace nota
                 fl.wFile(Path.GetDirectoryName(System.AppDomain.CurrentDomain.BaseDirectory.ToString()) + Path.DirectorySeparatorChar, "log.log", cLog, true);
 
             }
-            
+
             return ret;
 
         }
@@ -822,11 +822,11 @@ namespace nota
         {
 
             Boolean ret = false;
-                        
+
             string natuop = "", regesp = "", optsmp = "", incult = "", status = "", aliquota = "", itemlista = "";
 
             string codtrib = "", muniprest = "", cnpj = "", inscricao = "";
-            
+
             string cabecalho = "", rodape = "";
 
             double vts = 0, vtd = 0, vti = 0;
@@ -853,7 +853,7 @@ namespace nota
             DateTime dt = DateTime.Now;
 
             string s = dt.ToString("yyyy-MM-dd");
-            
+
             string path_exp = Path.GetDirectoryName(System.AppDomain.CurrentDomain.BaseDirectory.ToString()) + Path.DirectorySeparatorChar + "importacoes" + Path.DirectorySeparatorChar + cod_emp + Path.DirectorySeparatorChar + s + Path.DirectorySeparatorChar;
 
             DirectoryInfo dir = new DirectoryInfo(path_exp);
@@ -911,7 +911,7 @@ namespace nota
                     cLog[0] = "Empresa não cadastrada ou não possui o cadastro completo";
 
                     fl.wFile(Path.GetDirectoryName(System.AppDomain.CurrentDomain.BaseDirectory.ToString()) + Path.DirectorySeparatorChar, "log.log", cLog, true);
-                    
+
                     return false;
 
                 }
@@ -964,208 +964,208 @@ namespace nota
 
                         }*/
 
-                        //StreamWriter writer = new StreamWriter(path_exp + cod_nf + " - " + s + Path.DirectorySeparatorChar + s + "-" + i + ".txt");
+                    //StreamWriter writer = new StreamWriter(path_exp + cod_nf + " - " + s + Path.DirectorySeparatorChar + s + "-" + i + ".txt");
 
-                        StreamWriter writer = new StreamWriter(path_exp + cod_nf + " - " + s + Path.DirectorySeparatorChar + s + ".txt");
+                    StreamWriter writer = new StreamWriter(path_exp + cod_nf + " - " + s + Path.DirectorySeparatorChar + s + ".txt");
 
-                        while (dataReader.Read())
+                    while (dataReader.Read())
+                    {
+
+                        linhaAt++;
+
+                        ind = dataReader.GetString(1);
+
+                        if (control == 0)
                         {
 
-                            linhaAt++;
-
-                            ind = dataReader.GetString(1);
-
-                            if(control == 0)
+                            if (ind.Equals("1"))
                             {
 
-                                if (ind.Equals("1"))
-                                {
-
-                                    vsLay = dataReader.GetString(2);
-                                    ie = dataReader.GetString(3);
-                                    diC = dataReader.GetString(4);
-                                    dfC = dataReader.GetString(5);
-
-                                }
-
-                                string cmm = "84298";//inscricao municipal
-
-                                cabecalho = "01" + cnpj.PadRight(14, '0') + cmm.PadLeft(8, '0') + "09";
-                                cabecalho = cabecalho.PadRight(150, ' ');
-
-                                writer.WriteLine(cabecalho);
-
-                                control++;
+                                vsLay = dataReader.GetString(2);
+                                ie = dataReader.GetString(3);
+                                diC = dataReader.GetString(4);
+                                dfC = dataReader.GetString(5);
 
                             }
 
-                            if (ind.Equals("9"))
-                            {
+                            string cmm = "84298";//inscricao municipal
 
-                                nLine = dataReader.GetString(6);
+                            cabecalho = "01" + cnpj.PadRight(14, '0') + cmm.PadLeft(8, '0') + "09";
+                            cabecalho = cabecalho.PadRight(150, ' ');
 
-                                nServ = dataReader.GetString(7);
+                            writer.WriteLine(cabecalho);
 
-                            }
+                            control++;
 
-                            if (ind.Equals("2"))
-                            {
-
-                                rps = dataReader.GetString(8).Trim();
-                                a = dataReader.GetString(9).Trim();
-                                nRps = dataReader.GetString(10).Trim();
-                                dtRps = dataReader.GetString(11).Trim();
-                                t = dataReader.GetString(12).Trim();
-                                valServ = dataReader.GetString(13).Trim();
-                                dedu = dataReader.GetString(14).Trim();
-                                aliq = dataReader.GetString(16).Trim();
-                                iss = dataReader.GetString(17).Trim();
-                                tpDoc = dataReader.GetString(18).Trim();
-                                doc = dataReader.GetString(19).Trim();
-                                nome = dataReader.GetString(21).Trim();
-                                ende = dataReader.GetString(22).Trim();
-                                num = dataReader.GetString(23).Trim();
-                                comp = dataReader.GetString(24).Trim();
-                                bairro = dataReader.GetString(25).Trim();
-                                uf = dataReader.GetString(26).Trim();
-                                cep = dataReader.GetString(27).Trim();
-                                email = dataReader.GetString(28).Trim();
-                                desc = dataReader.GetString(29).Trim();
-                                cod_ibge = dataReader.GetString(36).Trim();
-                                cidade = dataReader.GetString(31).Trim();
-                                frmPag = dataReader.GetString(32).Trim();
-                                email2 = dataReader.GetString(33).Trim();
-
-                                nfse++;
-
-                                numRps = nfse.ToString().PadLeft(8, '0');
-
-                                string dataFmt = dtRps.Substring(6, 2) + dtRps.Substring(4, 2) + dtRps.Substring(0, 4);
-
-                                string codAtividade = "000604", cfps = "511", impRetido = "N", vlrImposto = "", vlrTotal = "", vlrAprxImposto = "";
-                                string alqImpAprx = "", fontImpAprx = "", filler = "";
-                                string dataEmissao = s.Substring(8, 2) + s.Substring(5, 2) + s.Substring(0,4);//"yyyy-MM-dd";
-                                string infoTransp = pad.PadLeft(525, ' '), qtdTransp = pad.PadLeft(14, '0'),  espTrans = pad.PadLeft(50, ' ');
-                                string infroTranspeso = pad.PadRight(28, '0'), infoTranspd = pad.PadLeft(34, '0');
-                                
-                                if (tpDoc.Equals("2"))
-                                {
-
-                                    //iDoc = "Cnpj";
-                                    iDoc = "J";
-
-                                }
-                                else if (tpDoc.Equals("1"))
-                                {
-
-                                    //iDoc = "Cpf";
-                                    iDoc = "F";
-                                    
-                                }
-
-                                //(double.Parse(valServ) / 100).ToString("0.00").Replace(',', '.');
-                                double value = double.Parse(valServ) / 100;
-
-                                vts += value;
-
-                                aliq = aliq.Replace(".", "");
-
-                                aliq = aliq.Replace(",", "");
-
-                                aliq = aliq.Replace("0", "");
-
-                                double aliquotaD = double.Parse(aliq) / 100;
-
-                                double vlimp = aliquotaD * value;
-
-                                vlimp = Math.Round(vlimp,2);
-                                //2,997
-                                vti += vlimp;
-
-                                vlrImposto = vlimp.ToString("0.00").PadRight(4, '0');
-
-                                vlrImposto = vlrImposto.Replace(",", "").PadLeft(14, '0');
-
-                                string vlrServico = value.ToString("0.00").Replace(",", "").PadLeft(14, '0');
-
-                                vlrTotal = vlrServico;
-
-                                string vlrServicol = value.ToString("0.000000000").Replace(",", "").PadLeft(19, '0');
-
-                                string vlrTotall = vlrServicol;
-
-                                nRps = nRps.TrimStart('0');
-
-                                fontImpAprx = "IBPT";
-
-                                if (dedu.Length > 14)
-                                {
-                                    dedu = dedu.Substring(0, 14);
-                                }
-                                else
-                                {
-                                    dedu = dedu.PadLeft(14, '0');
-                                }
-
-                                double vai = (value * ((16.46) / 100));
-
-                                vai = Math.Round(vai,2);
-
-                                vlrAprxImposto = vai.ToString("0.00").Replace(",","").PadLeft(14, '0');
-
-                                aliq = aliq.PadRight(3, '0');
-
-                                aliq = aliq.PadLeft(5, '0');
-
-                                //VERSAO FINAL SEM ;
-                                line = "1" + numRps + "000000001" + dataFmt + codAtividade.PadLeft(6, '0') + cfps.PadRight(3, '0') + "17" + doc.PadRight(14, '0') + nome.PadRight(100, ' ') + cep.PadRight(8, ' ') + ende.PadRight(100, ' ') + bairro.PadRight(50, ' ') + cidade.PadRight(60, ' ') + uf.PadRight(2, ' ') + pad.PadRight(100, ' ') + email.PadRight(80, ' ') + "S" + impRetido + vlrServico.PadRight(14, '0');//valServ.Substring(valServ.Length - 13);
-                                line += dedu + vlrImposto.PadRight(14, '0')+ aliq + vlrTotal.PadRight(14, '0') + pad.PadLeft(70, '0') + nRps.PadLeft(8, '0') + "S" + pad.PadLeft(255, ' ') + dataEmissao + iDoc;
-                                line += ie.PadRight(20, ' ') + infoTransp + qtdTransp + espTrans + infroTranspeso + "22" + infoTranspd + cidade.PadRight(100, ' ') + uf;
-                                line += vlrAprxImposto + /*alqImpAprx.PadRight(5, '0')*/"01646" + fontImpAprx.PadRight(10, ' ') + filler.PadLeft(39, ' ');
-
-                                //VERSAO FINAL COM ;
-                                /*line = "1;" + numRps + ";00000000;1;" + dataFmt + ";" + codAtividade.PadLeft(6, '0') + ";" + cfps.PadRight(3, '0') + ";17;" + doc.PadRight(14, '0') + ";" + nome.PadRight(100, ' ') + ";" + cep.PadRight(8, ' ') + ";" + ende.PadRight(100, ' ') + ";" + bairro.PadRight(50, ' ') + ";" + cidade.PadRight(60, ' ') + ";" + uf.PadRight(2, ' ') + ";" + pad.PadRight(100, ' ') + ";" + email.PadRight(80, ' ') + ";S;" + impRetido + ";" + vlrServico.PadRight(14, '0');//valServ.Substring(valServ.Length - 13);
-                                line += ";" + dedu + ";" + vlrImposto.PadRight(14, '0') + ";" + aliq.PadLeft(5, '0') + ";" + vlrTotal.PadRight(14, '0') + ";" + pad.PadLeft(70, '0') + ";" + nRps.PadLeft(8, '0') + ";F;" + pad.PadLeft(255, ' ') + ";" + dataEmissao + ";" + iDoc;
-                                line += ";" + ie.PadRight(20, ' ') + ";" + infoTransp + ";" + qtdTransp + ";" + espTrans + ";" + infoTranspd + ";" + cidade.PadRight(100, ' ') + ";" + uf;
-                                line += ";" + vlrAprxImposto + ";" + /*alqImpAprx.PadRight(5, '0')"01646" + ";" + fontImpAprx.PadRight(10, ' ') + ";" + filler.PadLeft(39, ' ');*/
-
-                                /*line = "1" + numRps.PadLeft(8, '0') + "000000001" + dataFmt + codAtividade.PadLeft(6, '0') + cfps.PadRight(3, '0') + "17" + doc.PadRight(14, '0') + nome.PadRight(100, ' ') + cep.PadRight(8, ' ') + ende.PadRight(100, ' ') + bairro.PadRight(50, ' ') + cidade.PadRight(60, ' ') + uf.PadRight(2, ' ') + pad.PadRight(100, ' ') + email.PadRight(80, ' ') + "S" + impRetido + vlrServico.PadRight(14, '0');//valServ.Substring(valServ.Length - 13);
-                                line += dedu.Substring(valServ.Length - 13) + vlrImposto.PadRight(14, '0') + aliq.PadRight(5, '0') + vlrTotal.PadRight(14,'0') + pad.PadLeft(70, '0') + nRps.PadRight(8, '0') + "F" + pad.PadLeft(255, ' ') + dataEmissao + iDoc;
-                                line += doc.PadLeft(20, ' ') + infoTransp + qtdTransp + espTrans + infoTranspd + cidade.PadRight(100, ' ') + uf;
-                                line += vlrAprxImposto.PadRight(14, '0') +alqImpAprx.PadRight(5, '0') + fontImpAprx.PadLeft(10, ' ') + filler.PadLeft(39, ' ');*/
-
-
-                                /*line = "1;" + numRps + ";000000001;" + dataFmt + ";" + codAtividade + ";" + cfps + ";17;" + cnpj + ";" + nome.PadRight(100, ' ') + ";" + cep.PadRight(8, ' ') + ";" + ende.PadRight(100, ' ') + ";" + bairro.PadRight(50, ' ') + ";" + cidade.PadRight(60, ' ') + ";" + uf.PadRight(2, ' ') + ";" + pad.PadRight(100, ' ') + ";" + email.PadRight(80, ' ') + ";N;" + impRetido + ";" + valServ.Substring(valServ.Length - 13);
-                                line += ";" + dedu.Substring(valServ.Length - 13) + ";" + vlrImposto.PadRight(14, '0') + ";" + aliq.PadLeft(5, '0') + ";" + vlrTotal.PadRight(14, '0') + ";" + pad.PadLeft(70, '0') + ";" + rps.PadLeft(8, '0') + ";F;" + pad.PadLeft(255, '0') + ";" + dataEmissao + ";" + iDoc;
-                                line += ";" + doc.PadLeft(20, ' ') + ";" + infoTransp + ";" + qtdTransp + ";" + espTrans + ";" + infoTranspd + ";" + cidade.PadRight(100, ' ') + ";" + uf;
-                                line += ";" + vlrAprxImposto + ";" + alqImpAprx.PadRight(5, '0') + ";" + fontImpAprx.PadRight(10, ' ') + ";" + filler.PadRight(39, ' ') + ";";*/
-
-                                writer.WriteLine(line);
-
-                                line = "2" + numRps + "00000001" + "00000000010000" + "UN" + vlrServicol + vlrTotall + desc.PadRight(911, ' ') + pad.PadLeft(118, ' ');
-
-                                writer.WriteLine(line);
-
-                            }
-
-                            /*if (nfse == qntRps)
-                            {
-                                break;
-                            }*/
-                                     
                         }
 
-                        //vts = Math.Round(vts);
+                        if (ind.Equals("9"))
+                        {
 
-                        //vti = Math.Round(vti);
+                            nLine = dataReader.GetString(6);
 
-                        line = "9" + nfse.ToString().PadLeft(4, '0') + vts.ToString("0.00").Replace(",", "").PadLeft(14, '0') + pad.PadLeft(14, '0') + vti.ToString("0.00").Replace(",", "").PadLeft(14, '0');
+                            nServ = dataReader.GetString(7);
 
-                        writer.WriteLine(line);
+                        }
 
-                        control = 0;
+                        if (ind.Equals("2"))
+                        {
 
-                        writer.Close();
+                            rps = dataReader.GetString(8).Trim();
+                            a = dataReader.GetString(9).Trim();
+                            nRps = dataReader.GetString(10).Trim();
+                            dtRps = dataReader.GetString(11).Trim();
+                            t = dataReader.GetString(12).Trim();
+                            valServ = dataReader.GetString(13).Trim();
+                            dedu = dataReader.GetString(14).Trim();
+                            aliq = dataReader.GetString(16).Trim();
+                            iss = dataReader.GetString(17).Trim();
+                            tpDoc = dataReader.GetString(18).Trim();
+                            doc = dataReader.GetString(19).Trim();
+                            nome = dataReader.GetString(21).Trim();
+                            ende = dataReader.GetString(22).Trim();
+                            num = dataReader.GetString(23).Trim();
+                            comp = dataReader.GetString(24).Trim();
+                            bairro = dataReader.GetString(25).Trim();
+                            uf = dataReader.GetString(26).Trim();
+                            cep = dataReader.GetString(27).Trim();
+                            email = dataReader.GetString(28).Trim();
+                            desc = dataReader.GetString(29).Trim();
+                            cod_ibge = dataReader.GetString(36).Trim();
+                            cidade = dataReader.GetString(31).Trim();
+                            frmPag = dataReader.GetString(32).Trim();
+                            email2 = dataReader.GetString(33).Trim();
+
+                            nfse++;
+
+                            numRps = nfse.ToString().PadLeft(8, '0');
+
+                            string dataFmt = dtRps.Substring(6, 2) + dtRps.Substring(4, 2) + dtRps.Substring(0, 4);
+
+                            string codAtividade = "000604", cfps = "511", impRetido = "N", vlrImposto = "", vlrTotal = "", vlrAprxImposto = "";
+                            string alqImpAprx = "", fontImpAprx = "", filler = "";
+                            string dataEmissao = s.Substring(8, 2) + s.Substring(5, 2) + s.Substring(0, 4);//"yyyy-MM-dd";
+                            string infoTransp = pad.PadLeft(525, ' '), qtdTransp = pad.PadLeft(14, '0'), espTrans = pad.PadLeft(50, ' ');
+                            string infroTranspeso = pad.PadRight(28, '0'), infoTranspd = pad.PadLeft(34, '0');
+
+                            if (tpDoc.Equals("2"))
+                            {
+
+                                //iDoc = "Cnpj";
+                                iDoc = "J";
+
+                            }
+                            else if (tpDoc.Equals("1"))
+                            {
+
+                                //iDoc = "Cpf";
+                                iDoc = "F";
+
+                            }
+
+                            //(double.Parse(valServ) / 100).ToString("0.00").Replace(',', '.');
+                            double value = double.Parse(valServ) / 100;
+
+                            vts += value;
+
+                            aliq = aliq.Replace(".", "");
+
+                            aliq = aliq.Replace(",", "");
+
+                            aliq = aliq.Replace("0", "");
+
+                            double aliquotaD = double.Parse(aliq) / 100;
+
+                            double vlimp = aliquotaD * value;
+
+                            vlimp = Math.Round(vlimp, 2);
+                            //2,997
+                            vti += vlimp;
+
+                            vlrImposto = vlimp.ToString("0.00").PadRight(4, '0');
+
+                            vlrImposto = vlrImposto.Replace(",", "").PadLeft(14, '0');
+
+                            string vlrServico = value.ToString("0.00").Replace(",", "").PadLeft(14, '0');
+
+                            vlrTotal = vlrServico;
+
+                            string vlrServicol = value.ToString("0.000000000").Replace(",", "").PadLeft(19, '0');
+
+                            string vlrTotall = vlrServicol;
+
+                            nRps = nRps.TrimStart('0');
+
+                            fontImpAprx = "IBPT";
+
+                            if (dedu.Length > 14)
+                            {
+                                dedu = dedu.Substring(0, 14);
+                            }
+                            else
+                            {
+                                dedu = dedu.PadLeft(14, '0');
+                            }
+
+                            double vai = (value * ((16.46) / 100));
+
+                            vai = Math.Round(vai, 2);
+
+                            vlrAprxImposto = vai.ToString("0.00").Replace(",", "").PadLeft(14, '0');
+
+                            aliq = aliq.PadRight(3, '0');
+
+                            aliq = aliq.PadLeft(5, '0');
+
+                            //VERSAO FINAL SEM ;
+                            line = "1" + numRps + "000000001" + dataFmt + codAtividade.PadLeft(6, '0') + cfps.PadRight(3, '0') + "17" + doc.PadRight(14, '0') + nome.PadRight(100, ' ') + cep.PadRight(8, ' ') + ende.PadRight(100, ' ') + bairro.PadRight(50, ' ') + cidade.PadRight(60, ' ') + uf.PadRight(2, ' ') + pad.PadRight(100, ' ') + email.PadRight(80, ' ') + "S" + impRetido + vlrServico.PadRight(14, '0');//valServ.Substring(valServ.Length - 13);
+                            line += dedu + vlrImposto.PadRight(14, '0') + aliq + vlrTotal.PadRight(14, '0') + pad.PadLeft(70, '0') + nRps.PadLeft(8, '0') + "S" + pad.PadLeft(255, ' ') + dataEmissao + iDoc;
+                            line += ie.PadRight(20, ' ') + infoTransp + qtdTransp + espTrans + infroTranspeso + "22" + infoTranspd + cidade.PadRight(100, ' ') + uf;
+                            line += vlrAprxImposto + /*alqImpAprx.PadRight(5, '0')*/"01646" + fontImpAprx.PadRight(10, ' ') + filler.PadLeft(39, ' ');
+
+                            //VERSAO FINAL COM ;
+                            /*line = "1;" + numRps + ";00000000;1;" + dataFmt + ";" + codAtividade.PadLeft(6, '0') + ";" + cfps.PadRight(3, '0') + ";17;" + doc.PadRight(14, '0') + ";" + nome.PadRight(100, ' ') + ";" + cep.PadRight(8, ' ') + ";" + ende.PadRight(100, ' ') + ";" + bairro.PadRight(50, ' ') + ";" + cidade.PadRight(60, ' ') + ";" + uf.PadRight(2, ' ') + ";" + pad.PadRight(100, ' ') + ";" + email.PadRight(80, ' ') + ";S;" + impRetido + ";" + vlrServico.PadRight(14, '0');//valServ.Substring(valServ.Length - 13);
+                            line += ";" + dedu + ";" + vlrImposto.PadRight(14, '0') + ";" + aliq.PadLeft(5, '0') + ";" + vlrTotal.PadRight(14, '0') + ";" + pad.PadLeft(70, '0') + ";" + nRps.PadLeft(8, '0') + ";F;" + pad.PadLeft(255, ' ') + ";" + dataEmissao + ";" + iDoc;
+                            line += ";" + ie.PadRight(20, ' ') + ";" + infoTransp + ";" + qtdTransp + ";" + espTrans + ";" + infoTranspd + ";" + cidade.PadRight(100, ' ') + ";" + uf;
+                            line += ";" + vlrAprxImposto + ";" + /*alqImpAprx.PadRight(5, '0')"01646" + ";" + fontImpAprx.PadRight(10, ' ') + ";" + filler.PadLeft(39, ' ');*/
+
+                            /*line = "1" + numRps.PadLeft(8, '0') + "000000001" + dataFmt + codAtividade.PadLeft(6, '0') + cfps.PadRight(3, '0') + "17" + doc.PadRight(14, '0') + nome.PadRight(100, ' ') + cep.PadRight(8, ' ') + ende.PadRight(100, ' ') + bairro.PadRight(50, ' ') + cidade.PadRight(60, ' ') + uf.PadRight(2, ' ') + pad.PadRight(100, ' ') + email.PadRight(80, ' ') + "S" + impRetido + vlrServico.PadRight(14, '0');//valServ.Substring(valServ.Length - 13);
+                            line += dedu.Substring(valServ.Length - 13) + vlrImposto.PadRight(14, '0') + aliq.PadRight(5, '0') + vlrTotal.PadRight(14,'0') + pad.PadLeft(70, '0') + nRps.PadRight(8, '0') + "F" + pad.PadLeft(255, ' ') + dataEmissao + iDoc;
+                            line += doc.PadLeft(20, ' ') + infoTransp + qtdTransp + espTrans + infoTranspd + cidade.PadRight(100, ' ') + uf;
+                            line += vlrAprxImposto.PadRight(14, '0') +alqImpAprx.PadRight(5, '0') + fontImpAprx.PadLeft(10, ' ') + filler.PadLeft(39, ' ');*/
+
+
+                            /*line = "1;" + numRps + ";000000001;" + dataFmt + ";" + codAtividade + ";" + cfps + ";17;" + cnpj + ";" + nome.PadRight(100, ' ') + ";" + cep.PadRight(8, ' ') + ";" + ende.PadRight(100, ' ') + ";" + bairro.PadRight(50, ' ') + ";" + cidade.PadRight(60, ' ') + ";" + uf.PadRight(2, ' ') + ";" + pad.PadRight(100, ' ') + ";" + email.PadRight(80, ' ') + ";N;" + impRetido + ";" + valServ.Substring(valServ.Length - 13);
+                            line += ";" + dedu.Substring(valServ.Length - 13) + ";" + vlrImposto.PadRight(14, '0') + ";" + aliq.PadLeft(5, '0') + ";" + vlrTotal.PadRight(14, '0') + ";" + pad.PadLeft(70, '0') + ";" + rps.PadLeft(8, '0') + ";F;" + pad.PadLeft(255, '0') + ";" + dataEmissao + ";" + iDoc;
+                            line += ";" + doc.PadLeft(20, ' ') + ";" + infoTransp + ";" + qtdTransp + ";" + espTrans + ";" + infoTranspd + ";" + cidade.PadRight(100, ' ') + ";" + uf;
+                            line += ";" + vlrAprxImposto + ";" + alqImpAprx.PadRight(5, '0') + ";" + fontImpAprx.PadRight(10, ' ') + ";" + filler.PadRight(39, ' ') + ";";*/
+
+                            writer.WriteLine(line);
+
+                            line = "2" + numRps + "00000001" + "00000000010000" + "UN" + vlrServicol + vlrTotall + desc.PadRight(911, ' ') + pad.PadLeft(118, ' ');
+
+                            writer.WriteLine(line);
+
+                        }
+
+                        /*if (nfse == qntRps)
+                        {
+                            break;
+                        }*/
+
+                    }
+
+                    //vts = Math.Round(vts);
+
+                    //vti = Math.Round(vti);
+
+                    line = "9" + nfse.ToString().PadLeft(4, '0') + vts.ToString("0.00").Replace(",", "").PadLeft(14, '0') + pad.PadLeft(14, '0') + vti.ToString("0.00").Replace(",", "").PadLeft(14, '0');
+
+                    writer.WriteLine(line);
+
+                    control = 0;
+
+                    writer.Close();
 
                     //}
 
@@ -1181,8 +1181,8 @@ namespace nota
                 fl.wFile(Path.GetDirectoryName(System.AppDomain.CurrentDomain.BaseDirectory.ToString()) + Path.DirectorySeparatorChar, "log.log", cLog, true);
             }
 
-            
-            
+
+
 
             //line = "01" + cnpj + inscricao + "09";
 
@@ -1193,7 +1193,7 @@ namespace nota
             return ret;
 
         }
-        
+
         public Boolean gera_lote_aracatuba(string cod_nf, string cod_emp)//NAO FUNFA
         {
 
@@ -1217,7 +1217,7 @@ namespace nota
 
                 if (!dir.Exists)
                 {
-                    
+
                     dir.Create();
 
                 }
@@ -1306,7 +1306,7 @@ namespace nota
 
                 if (dataReader.HasRows)
                 {
-                    
+
                     if (!Directory.Exists(path_exp + cod_nf + " - " + s))
                     {
 
@@ -1438,7 +1438,7 @@ namespace nota
                                 if (ind.Equals("9"))
                                 {
 
-                                    
+
 
                                 }
 
@@ -1485,7 +1485,7 @@ namespace nota
                                     write.WriteStartElement("NOTA");//ABRE TAG NOTA
 
                                     write.WriteStartElement("RPS");
-                                    
+
                                     String rpss = String.Format("{0:000000000000}", Int32.Parse(nRps)).Insert(4, "-").Insert(9, "-");
 
                                     write.WriteValue(rpss);
@@ -1495,7 +1495,7 @@ namespace nota
                                     write.WriteStartElement("LOTE");
 
                                     write.WriteValue(codnf);
-                                     
+
                                     write.WriteEndElement();
 
                                     write.WriteStartElement("SEQUENCIA");
@@ -1511,7 +1511,7 @@ namespace nota
                                     write.WriteEndElement();
 
                                     write.WriteStartElement("HORAEMISSAO");
-                                    
+
                                     write.WriteValue(System.DateTime.Now.ToString("HH:mm:ss"));
 
                                     write.WriteEndElement();
@@ -1542,7 +1542,7 @@ namespace nota
 
                                     write.WriteStartElement("ALIQUOTAAPLICADA");
 
-                                    write.WriteValue(Convert.ToDecimal(Double.Parse(aliquota) / 100).ToString("0.00").Replace(",","."));
+                                    write.WriteValue(Convert.ToDecimal(Double.Parse(aliquota) / 100).ToString("0.00").Replace(",", "."));
 
                                     write.WriteEndElement();
 
@@ -1555,9 +1555,9 @@ namespace nota
                                     write.WriteStartElement("IMPOSTO");
 
                                     String tr = Math.Round(((Convert.ToDouble(valServ)) * (Convert.ToDouble(aliquota) / 10000))).ToString("#.##").Replace(",", "");
-                                    
+
                                     //string imposto = (Convert.ToDecimal(valServ) * (Convert.ToDecimal(Double.Parse(aliquota) / 10000))).ToString().Replace(",","");
-                                    
+
                                     write.WriteValue(tr.Insert(tr.Length - 2, ".")); //ADICIONAR NAS CONFIGURAÇÕES DA EMPRESA
 
                                     write.WriteEndElement();
@@ -1849,7 +1849,7 @@ namespace nota
                     cnpj = info.GetInt64(14).ToString();
 
                     inscricao = info.GetInt64(15).ToString();
-                    
+
                 }
                 else
                 {
@@ -1889,7 +1889,7 @@ namespace nota
                         }
 
                     }
-                    
+
                     StreamWriter writer = new StreamWriter(path_exp + cod_nf + " - " + s + Path.DirectorySeparatorChar + s + ".txt");
 
                     String d1 = "";
@@ -1967,7 +1967,7 @@ namespace nota
                             numRps = nfse.ToString().PadLeft(8, '0');
 
                             //string dataFmt = dtRps.Substring(6, 2) + dtRps.Substring(4, 2) + dtRps.Substring(0, 4);
-                            
+
                             //20160305
                             string dataFmt = dtRps.Substring(6, 2) + "/" + dtRps.Substring(4, 2) + "/" + dtRps.Substring(0, 4);
 
@@ -2068,8 +2068,8 @@ namespace nota
                             line += "|RUA|" + ende + "|" + num + "||" + bairro + "|" + cidade + "|" + uf + "|" + cep + "||";
                             line += "||||||||";
                             line += "|" + email + "|||";
-                            
-                            writer.WriteLine(line); 
+
+                            writer.WriteLine(line);
 
                         }
 
@@ -2108,7 +2108,7 @@ namespace nota
                 db.dataLog(e.ToString());
 
             }
-            
+
             //line = "01" + cnpj + inscricao + "09";
 
             //writer.WriteLine(line);
@@ -2205,7 +2205,7 @@ namespace nota
                     cLog[0] = "Empresa não cadastrada ou não possui o cadastro completo";
 
                     //fl.wFile(Path.GetDirectoryName(System.AppDomain.CurrentDomain.BaseDirectory.ToString()) + Path.DirectorySeparatorChar, "log.log", cLog, true);
-                    
+
                     fl.wFile("C://inetpub//wwwroot//sci_nfse//", "log.log", cLog, true);
 
                     return false;
@@ -2274,7 +2274,7 @@ namespace nota
                             write.WriteStartElement("LoteRps");
 
                             write.WriteAttributeString("id", i.ToString());
-                                                        
+
                             conta = ct - linhaAt;
 
                             if (conta < tamLote)
@@ -2406,299 +2406,299 @@ namespace nota
 
                                     write.WriteStartElement("Rps");
 
-                                        write.WriteStartElement("InfRps");
+                                    write.WriteStartElement("InfRps");
 
-                                        write.WriteAttributeString("id", nRps);
+                                    write.WriteAttributeString("id", nRps);
 
-                                            write.WriteStartElement("IdentificacaoRps");
+                                    write.WriteStartElement("IdentificacaoRps");
 
-                                                write.WriteStartElement("Numero");
-                                                
-                                                write.WriteValue(qntRps);
-                                                    
-                                                write.WriteEndElement();
+                                    write.WriteStartElement("Numero");
 
-                                                write.WriteStartElement("Serie");
+                                    write.WriteValue(qntRps);
 
-                                                write.WriteValue("1");
+                                    write.WriteEndElement();
 
-                                                write.WriteEndElement();
+                                    write.WriteStartElement("Serie");
 
-                                                write.WriteStartElement("Tipo");
+                                    write.WriteValue("1");
 
-                                                write.WriteValue("1");
+                                    write.WriteEndElement();
 
-                                                write.WriteEndElement();
+                                    write.WriteStartElement("Tipo");
 
-                                            write.WriteEndElement();//FECHA IdentificacaoRps
+                                    write.WriteValue("1");
 
-                                            write.WriteStartElement("DataEmissao");
+                                    write.WriteEndElement();
 
-                                            write.WriteValue(dataFmt);
+                                    write.WriteEndElement();//FECHA IdentificacaoRps
 
-                                            write.WriteEndElement();
+                                    write.WriteStartElement("DataEmissao");
 
-                                            write.WriteStartElement("NaturezaOperacao");
+                                    write.WriteValue(dataFmt);
 
-                                            write.WriteValue(natuop);
+                                    write.WriteEndElement();
 
-                                            write.WriteEndElement();
+                                    write.WriteStartElement("NaturezaOperacao");
 
-                                            write.WriteStartElement("RegimeEspecialTributacao");
+                                    write.WriteValue(natuop);
 
-                                            write.WriteValue(regesp);
+                                    write.WriteEndElement();
 
-                                            write.WriteEndElement();
+                                    write.WriteStartElement("RegimeEspecialTributacao");
 
-                                            write.WriteStartElement("OptanteSimplesNacional");
+                                    write.WriteValue(regesp);
 
-                                            write.WriteValue(optsmp);
+                                    write.WriteEndElement();
 
-                                            write.WriteEndElement();
+                                    write.WriteStartElement("OptanteSimplesNacional");
 
-                                            write.WriteStartElement("IncentivadorCultural");
+                                    write.WriteValue(optsmp);
 
-                                            write.WriteValue(incult);
+                                    write.WriteEndElement();
 
-                                            write.WriteEndElement();
+                                    write.WriteStartElement("IncentivadorCultural");
 
-                                            write.WriteStartElement("Status");
+                                    write.WriteValue(incult);
 
-                                            write.WriteValue("1");
+                                    write.WriteEndElement();
 
-                                            write.WriteEndElement();
+                                    write.WriteStartElement("Status");
 
-                                            write.WriteStartElement("Servico");
+                                    write.WriteValue("1");
 
-                                                write.WriteStartElement("Valores");
+                                    write.WriteEndElement();
 
-                                                    write.WriteStartElement("ValorServicos");
+                                    write.WriteStartElement("Servico");
 
-                                                    write.WriteValue((double.Parse(valServ) / 100).ToString("0.00").Replace(',', '.'));
+                                    write.WriteStartElement("Valores");
 
-                                                    write.WriteEndElement();
+                                    write.WriteStartElement("ValorServicos");
 
-                                                    write.WriteStartElement("ValorDeducoes");
+                                    write.WriteValue((double.Parse(valServ) / 100).ToString("0.00").Replace(',', '.'));
 
-                                                    write.WriteValue("0.00");
+                                    write.WriteEndElement();
 
-                                                    write.WriteEndElement();
+                                    write.WriteStartElement("ValorDeducoes");
 
-                                                    write.WriteStartElement("ValorPis");
+                                    write.WriteValue("0.00");
 
-                                                    write.WriteValue("0.00");
+                                    write.WriteEndElement();
 
-                                                    write.WriteEndElement();
+                                    write.WriteStartElement("ValorPis");
 
-                                                    write.WriteStartElement("ValorCofins");
+                                    write.WriteValue("0.00");
 
-                                                    write.WriteValue("0.00");
+                                    write.WriteEndElement();
 
-                                                    write.WriteEndElement();
+                                    write.WriteStartElement("ValorCofins");
 
-                                                    write.WriteStartElement("ValorInss");
+                                    write.WriteValue("0.00");
 
-                                                    write.WriteValue("0.00");
+                                    write.WriteEndElement();
 
-                                                    write.WriteEndElement();
+                                    write.WriteStartElement("ValorInss");
 
-                                                    write.WriteStartElement("ValorIr");
+                                    write.WriteValue("0.00");
 
-                                                    write.WriteValue("0.00");
+                                    write.WriteEndElement();
 
-                                                    write.WriteEndElement();
+                                    write.WriteStartElement("ValorIr");
 
-                                                    write.WriteStartElement("ValorCsll");
+                                    write.WriteValue("0.00");
 
-                                                    write.WriteValue("0.00");
+                                    write.WriteEndElement();
 
-                                                    write.WriteEndElement();
+                                    write.WriteStartElement("ValorCsll");
 
-                                                    write.WriteStartElement("IssRetido");
+                                    write.WriteValue("0.00");
 
-                                                    write.WriteValue("0");
+                                    write.WriteEndElement();
 
-                                                    write.WriteEndElement();
+                                    write.WriteStartElement("IssRetido");
 
-                                                    write.WriteStartElement("ValorIss");
-                                    
-                                                    String tr = Math.Round(((Convert.ToDouble(valServ)) * (Convert.ToDouble(aliquota) / 10000))).ToString("#.##").Replace(",", "");
-                                    
-                                                    write.WriteValue(tr.Insert(tr.Length - 2, ".")); 
+                                    write.WriteValue("0");
 
-                                                    write.WriteEndElement();
-                                    
-                                                    write.WriteStartElement("ValorIssRetido");
+                                    write.WriteEndElement();
 
-                                                    write.WriteValue("0.00");
+                                    write.WriteStartElement("ValorIss");
 
-                                                    write.WriteEndElement();
+                                    String tr = Math.Round(((Convert.ToDouble(valServ)) * (Convert.ToDouble(aliquota) / 10000))).ToString("#.##").Replace(",", "");
 
-                                                    write.WriteStartElement("OutrasRetencoes");
+                                    write.WriteValue(tr.Insert(tr.Length - 2, "."));
 
-                                                    write.WriteValue("0.00");
+                                    write.WriteEndElement();
 
-                                                    write.WriteEndElement();
-                                                    
-                                                    write.WriteStartElement("BaseCalculo");
+                                    write.WriteStartElement("ValorIssRetido");
 
-                                                    write.WriteValue((double.Parse(valServ) / 100).ToString("0.00").Replace(',', '.'));
+                                    write.WriteValue("0.00");
 
-                                                    write.WriteEndElement();
+                                    write.WriteEndElement();
 
-                                                    write.WriteStartElement("Aliquota");
+                                    write.WriteStartElement("OutrasRetencoes");
 
-                                                    write.WriteValue(Convert.ToDecimal(Double.Parse(aliquota) / 100).ToString("0.00").Replace(",","."));
+                                    write.WriteValue("0.00");
 
-                                                    write.WriteEndElement();
+                                    write.WriteEndElement();
 
-                                                    write.WriteStartElement("ValorLiquidoNfse");
+                                    write.WriteStartElement("BaseCalculo");
 
-                                                    Double val = double.Parse((double.Parse(valServ) / 100).ToString("0.00").Replace(',', '.'));
+                                    write.WriteValue((double.Parse(valServ) / 100).ToString("0.00").Replace(',', '.'));
 
-                                                    Double imp = double.Parse(tr.Insert(tr.Length - 2, "."));
+                                    write.WriteEndElement();
 
-                                                    write.WriteValue(val - imp);
+                                    write.WriteStartElement("Aliquota");
 
-                                                    write.WriteEndElement();
+                                    write.WriteValue(Convert.ToDecimal(Double.Parse(aliquota) / 100).ToString("0.00").Replace(",", "."));
 
-                                                    write.WriteStartElement("DescontoIncondicionado");
+                                    write.WriteEndElement();
 
-                                                    write.WriteValue("0.00");
+                                    write.WriteStartElement("ValorLiquidoNfse");
 
-                                                    write.WriteEndElement();
+                                    Double val = double.Parse((double.Parse(valServ) / 100).ToString("0.00").Replace(',', '.'));
 
-                                                    write.WriteStartElement("DescontoCondicionado");
+                                    Double imp = double.Parse(tr.Insert(tr.Length - 2, "."));
 
-                                                    write.WriteValue("0.00");
+                                    write.WriteValue(val - imp);
 
-                                                    write.WriteEndElement();
-                                                                                                        
-                                                write.WriteEndElement();//FECHA Valores
+                                    write.WriteEndElement();
 
-                                                write.WriteStartElement("ItemListaServico");
+                                    write.WriteStartElement("DescontoIncondicionado");
 
-                                                write.WriteValue(itemlista);
+                                    write.WriteValue("0.00");
 
-                                                write.WriteEndElement();
+                                    write.WriteEndElement();
 
-                                                write.WriteStartElement("CodigoCnae");
+                                    write.WriteStartElement("DescontoCondicionado");
 
-                                                write.WriteValue("");
+                                    write.WriteValue("0.00");
 
-                                                write.WriteEndElement();
+                                    write.WriteEndElement();
 
-                                                write.WriteStartElement("CodigoTributacaoMunicipio");
+                                    write.WriteEndElement();//FECHA Valores
 
-                                                write.WriteValue(codtrib);
+                                    write.WriteStartElement("ItemListaServico");
 
-                                                write.WriteEndElement();
+                                    write.WriteValue(itemlista);
 
-                                                write.WriteStartElement("Discriminacao");
+                                    write.WriteEndElement();
 
-                                                write.WriteValue(desc);
+                                    write.WriteStartElement("CodigoCnae");
 
-                                                write.WriteEndElement();
+                                    write.WriteValue("");
 
-                                                write.WriteStartElement("CodigoMunicipio");
+                                    write.WriteEndElement();
 
-                                                write.WriteValue(muniprest);
+                                    write.WriteStartElement("CodigoTributacaoMunicipio");
 
-                                                write.WriteEndElement();
-                                                                
-                                            write.WriteEndElement();//FECHA Servico
-                                                                                
-                                            write.WriteStartElement("Prestador");
-                                                
-                                                write.WriteStartElement("Cnpj");
+                                    write.WriteValue(codtrib);
 
-                                                write.WriteValue(cnpj);
+                                    write.WriteEndElement();
 
-                                                write.WriteEndElement();
-                                    
-                                                write.WriteStartElement("InscricaoMunicipal");
+                                    write.WriteStartElement("Discriminacao");
 
-                                                write.WriteValue("");
+                                    write.WriteValue(desc);
 
-                                                write.WriteEndElement();
+                                    write.WriteEndElement();
 
-                                            write.WriteEndElement();//FECHA Prestador
+                                    write.WriteStartElement("CodigoMunicipio");
 
-                                            write.WriteStartElement("Tomador");
+                                    write.WriteValue(muniprest);
 
-                                                write.WriteStartElement("IdentificacaoTomador");
+                                    write.WriteEndElement();
 
-                                                    write.WriteStartElement("CpfCnpj");
-                                                    
-                                                        write.WriteStartElement("Cpf");
+                                    write.WriteEndElement();//FECHA Servico
 
-                                                        write.WriteValue(doc);
+                                    write.WriteStartElement("Prestador");
 
-                                                        write.WriteEndElement();
+                                    write.WriteStartElement("Cnpj");
 
-                                                    write.WriteEndElement();
+                                    write.WriteValue(cnpj);
 
-                                                write.WriteEndElement();//FECHA IdentificacaoTomador
+                                    write.WriteEndElement();
 
-                                                write.WriteStartElement("RazaoSocial");
+                                    write.WriteStartElement("InscricaoMunicipal");
 
-                                                write.WriteValue(nome);
+                                    write.WriteValue("");
 
-                                                write.WriteEndElement();
+                                    write.WriteEndElement();
 
-                                                write.WriteStartElement("Endereco");
+                                    write.WriteEndElement();//FECHA Prestador
 
-                                                    write.WriteStartElement("Endereco");
+                                    write.WriteStartElement("Tomador");
 
-                                                    write.WriteValue(ende);
+                                    write.WriteStartElement("IdentificacaoTomador");
 
-                                                    write.WriteEndElement();
+                                    write.WriteStartElement("CpfCnpj");
 
-                                                    write.WriteStartElement("Numero");
+                                    write.WriteStartElement("Cpf");
 
-                                                    write.WriteValue(num);
+                                    write.WriteValue(doc);
 
-                                                    write.WriteEndElement();
+                                    write.WriteEndElement();
 
-                                                    write.WriteStartElement("Complemento");
+                                    write.WriteEndElement();
 
-                                                    write.WriteValue(comp);
+                                    write.WriteEndElement();//FECHA IdentificacaoTomador
 
-                                                    write.WriteEndElement();
+                                    write.WriteStartElement("RazaoSocial");
 
-                                                    write.WriteStartElement("Bairro");
+                                    write.WriteValue(nome);
 
-                                                    write.WriteValue(bairro);
+                                    write.WriteEndElement();
 
-                                                    write.WriteEndElement();
+                                    write.WriteStartElement("Endereco");
 
-                                                    write.WriteStartElement("Uf");
+                                    write.WriteStartElement("Endereco");
 
-                                                    write.WriteValue(uf);
+                                    write.WriteValue(ende);
 
-                                                    write.WriteEndElement();
+                                    write.WriteEndElement();
 
-                                                    write.WriteStartElement("Cep");
+                                    write.WriteStartElement("Numero");
 
-                                                    write.WriteValue(cep);
+                                    write.WriteValue(num);
 
-                                                    write.WriteEndElement();
+                                    write.WriteEndElement();
 
-                                                write.WriteEndElement();//FECHA Endereco
+                                    write.WriteStartElement("Complemento");
 
-                                                write.WriteStartElement("Contato");
+                                    write.WriteValue(comp);
 
-                                                    write.WriteStartElement("Email");
+                                    write.WriteEndElement();
 
-                                                    write.WriteValue(email);
+                                    write.WriteStartElement("Bairro");
 
-                                                    write.WriteEndElement();
+                                    write.WriteValue(bairro);
 
-                                                write.WriteEndElement();//FECHA Contato
+                                    write.WriteEndElement();
 
-                                            write.WriteEndElement();//FECHA Tomador
+                                    write.WriteStartElement("Uf");
 
-                                        write.WriteEndElement();//FECHA InfRps
+                                    write.WriteValue(uf);
+
+                                    write.WriteEndElement();
+
+                                    write.WriteStartElement("Cep");
+
+                                    write.WriteValue(cep);
+
+                                    write.WriteEndElement();
+
+                                    write.WriteEndElement();//FECHA Endereco
+
+                                    write.WriteStartElement("Contato");
+
+                                    write.WriteStartElement("Email");
+
+                                    write.WriteValue(email);
+
+                                    write.WriteEndElement();
+
+                                    write.WriteEndElement();//FECHA Contato
+
+                                    write.WriteEndElement();//FECHA Tomador
+
+                                    write.WriteEndElement();//FECHA InfRps
 
                                     write.WriteEndElement();//FECHA Rps
 
@@ -2718,7 +2718,7 @@ namespace nota
                             write.WriteEndElement();//FECHA EnviarLoteRpsEnvio
 
                             write.Close();
-                            
+
                             control = 0;
 
                         }
@@ -3412,7 +3412,7 @@ namespace nota
         {
 
             Boolean ret = false;
-            
+
             string path_exp = Path.GetDirectoryName(System.AppDomain.CurrentDomain.BaseDirectory.ToString()) + Path.DirectorySeparatorChar + "importacoes" + Path.DirectorySeparatorChar + cod_emp + Path.DirectorySeparatorChar;
 
             NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
@@ -3424,13 +3424,13 @@ namespace nota
             string natuop = "", regesp = "", optsmp = "", incult = "", status = "", aliquota = "", itemlista = "";
 
             string codtrib = "", muniprest = "", cnpj = "", inscricao = "";
-            
+
             double vts = 0, vtd = 0, vti = 0;
 
             string vlrImposto = "";
 
             double vlrTotal = 0, vlrImpTotal = 0;
-            
+
             string ibge_tomador = "";
 
             string codEmpresa = "";
@@ -3438,7 +3438,7 @@ namespace nota
             int codnf = 0;
 
             tamLote = 100;
-            
+
             try
             {
 
@@ -3543,7 +3543,7 @@ namespace nota
                     //int sec = dt.Second;
 
                     int sec = 10;
-                    
+
                     for (int i = 0; i <= nLotes; i++)
                     {
 
@@ -3567,7 +3567,7 @@ namespace nota
                             }
 
                         }
-                                               
+
 
                         string datanome = dt.ToString("yyyyMMddHHmm") + sec++.ToString();
 
@@ -3612,7 +3612,7 @@ namespace nota
                                 control++;
 
                             }
-                            
+
                             if (ind.Equals("9"))
                             {
 
@@ -3765,7 +3765,7 @@ namespace nota
                                 //58
                                 line = "1|" + codnf + "|" + cnpj + "|" + inscricao + "|" + muniprest + "|" + nRps + "|E|" + dtRps + "|" + natuop + "|" + regesp + "|" + optsmp + "|1|" + itemlista + "|" + codtrib;
                                 line += "||" + desc + "|" + value.ToString("0.00").Replace(',', '.') + "|0.00|0.00|0.00|0.00|0.00|0.00|2|" + vlimp.ToString("0.00").Replace(',', '.') + "|0.00|0.00|" + value.ToString("0.00").Replace(',', '.') + "|";
-                                line += ali.ToString("0.0000").Replace(",", ".") +"|" + value.ToString("0.00").Replace(',', '.') + "|||" + tpDoc + "|" + doc + "||" + nome + "|" + ende + "|" + num + "||" + bairro + "|" + uf + "|" + cep;
+                                line += ali.ToString("0.0000").Replace(",", ".") + "|" + value.ToString("0.00").Replace(',', '.') + "|||" + tpDoc + "|" + doc + "||" + nome + "|" + ende + "|" + num + "||" + bairro + "|" + uf + "|" + cep;
                                 line += "|" + ibge_tomador + "||" + email + "|||||||||" + cod_ibge + "|SP||||";
 
                                 writer.WriteLine(line);
@@ -3775,7 +3775,7 @@ namespace nota
                                 writer.WriteLine(line);
 
                                 ctLinha++;
-                                
+
                                 if (ctLinha == 99)
                                 {
                                     ctLinha = 0;
@@ -3818,7 +3818,7 @@ namespace nota
                 ret = true;
 
             }
-            catch(Exception e)
+            catch (Exception e)
             {
 
                 db.dataLog("EXCEPTION GERA_LOTE_PRESPRUD. ERRO : " + e.ToString());
@@ -3988,265 +3988,265 @@ namespace nota
 
                             write.WriteAttributeString("xmlns", "tc", null, "http://www.issnetonline.com.br/webserviceabrasf/vsd/tipos_complexos.xsd");
 
-                                write.WriteStartElement("LoteRps");
+                            write.WriteStartElement("LoteRps");
 
-                                    write.WriteStartElement("tc", "NumeroLote");
+                            write.WriteStartElement("tc", "NumeroLote");
 
-                                    write.WriteValue("");//FALTA VALOR
+                            write.WriteValue("");//FALTA VALOR
 
-                                    write.WriteEndElement();
+                            write.WriteEndElement();
 
-                                    write.WriteStartElement("tc", "CpfCnpj");
+                            write.WriteStartElement("tc", "CpfCnpj");
 
-                                        write.WriteStartElement("tc", "Cnpj");
+                            write.WriteStartElement("tc", "Cnpj");
 
-                                        write.WriteValue("");//FALTA VALOR
+                            write.WriteValue("");//FALTA VALOR
 
-                                        write.WriteEndElement();
+                            write.WriteEndElement();
 
-                                    write.WriteEndElement();//FEHCA CpfCnpj
+                            write.WriteEndElement();//FEHCA CpfCnpj
 
-                                    write.WriteStartElement("tc", "InscricaoMunicipal");
+                            write.WriteStartElement("tc", "InscricaoMunicipal");
 
-                                    write.WriteValue("");//FALTA VALOR
+                            write.WriteValue("");//FALTA VALOR
 
-                                    write.WriteEndElement();
+                            write.WriteEndElement();
 
-                                    write.WriteStartElement("tc", "QuantidadeRps");
+                            write.WriteStartElement("tc", "QuantidadeRps");
 
-                                    write.WriteValue("");//FALTA VALOR
+                            write.WriteValue("");//FALTA VALOR
 
-                                    write.WriteEndElement();
+                            write.WriteEndElement();
 
-                                    write.WriteStartElement("tc", "ListaRps");
+                            write.WriteStartElement("tc", "ListaRps");
 
-                                        write.WriteStartElement("tc", "Rps");
+                            write.WriteStartElement("tc", "Rps");
 
-                                            write.WriteStartElement("tc", "InfRps");
+                            write.WriteStartElement("tc", "InfRps");
 
-                                                write.WriteStartElement("tc", "IdentificacaoRps");
+                            write.WriteStartElement("tc", "IdentificacaoRps");
 
-                                                    write.WriteStartElement("tc", "Numero");
+                            write.WriteStartElement("tc", "Numero");
 
-                                                    write.WriteValue("");//FALTA VALOR
+                            write.WriteValue("");//FALTA VALOR
 
-                                                    write.WriteEndElement();
+                            write.WriteEndElement();
 
-                                                    write.WriteStartElement("tc", "Serie");
+                            write.WriteStartElement("tc", "Serie");
 
-                                                    write.WriteValue("");//FALTA VALOR
+                            write.WriteValue("");//FALTA VALOR
 
-                                                    write.WriteEndElement();
+                            write.WriteEndElement();
 
-                                                    write.WriteStartElement("tc", "Tipo");
+                            write.WriteStartElement("tc", "Tipo");
 
-                                                    write.WriteValue("");//FALTA VALOR
+                            write.WriteValue("");//FALTA VALOR
 
-                                                    write.WriteEndElement();
+                            write.WriteEndElement();
 
-                                                write.WriteEndElement();//FECHA IdentificacaoRps
+                            write.WriteEndElement();//FECHA IdentificacaoRps
 
-                                                write.WriteStartElement("tc", "DataEmissao");
+                            write.WriteStartElement("tc", "DataEmissao");
 
-                                                write.WriteValue("");//FALTA VALOR
+                            write.WriteValue("");//FALTA VALOR
 
-                                                write.WriteEndElement();
+                            write.WriteEndElement();
 
-                                                write.WriteStartElement("tc", "NaturezaOperacao");
+                            write.WriteStartElement("tc", "NaturezaOperacao");
 
-                                                write.WriteValue("");//FALTA VALOR
+                            write.WriteValue("");//FALTA VALOR
 
-                                                write.WriteEndElement();
+                            write.WriteEndElement();
 
-                                                write.WriteStartElement("tc", "OptanteSimplesNacional");
+                            write.WriteStartElement("tc", "OptanteSimplesNacional");
 
-                                                write.WriteValue("");//FALTA VALOR
+                            write.WriteValue("");//FALTA VALOR
 
-                                                write.WriteEndElement();
+                            write.WriteEndElement();
 
-                                                write.WriteStartElement("tc", "IncentivadorCultural");
+                            write.WriteStartElement("tc", "IncentivadorCultural");
 
-                                                write.WriteValue("");//FALTA VALOR
+                            write.WriteValue("");//FALTA VALOR
 
-                                                write.WriteEndElement();
+                            write.WriteEndElement();
 
-                                                write.WriteStartElement("tc", "Status");
+                            write.WriteStartElement("tc", "Status");
 
-                                                write.WriteValue("");//FALTA VALOR
+                            write.WriteValue("");//FALTA VALOR
 
-                                                write.WriteEndElement();
+                            write.WriteEndElement();
 
-                                                write.WriteStartElement("tc", "RegimeEspecialTributacao");
+                            write.WriteStartElement("tc", "RegimeEspecialTributacao");
 
-                                                write.WriteValue("");//FALTA VALOR
+                            write.WriteValue("");//FALTA VALOR
 
-                                                write.WriteEndElement();
+                            write.WriteEndElement();
 
-                                                write.WriteStartElement("tc", "Servico");
+                            write.WriteStartElement("tc", "Servico");
 
-                                                    write.WriteStartElement("tc", "Valores");
+                            write.WriteStartElement("tc", "Valores");
 
-                                                        write.WriteStartElement("tc", "ValorServicos");
+                            write.WriteStartElement("tc", "ValorServicos");
 
-                                                        write.WriteValue("");//FALTA VALOR
+                            write.WriteValue("");//FALTA VALOR
 
-                                                        write.WriteEndElement();
+                            write.WriteEndElement();
 
-                                                        write.WriteStartElement("tc", "ValorIss");
+                            write.WriteStartElement("tc", "ValorIss");
 
-                                                        write.WriteValue("");//FALTA VALOR
+                            write.WriteValue("");//FALTA VALOR
 
-                                                        write.WriteEndElement();
+                            write.WriteEndElement();
 
-                                                        write.WriteStartElement("tc", "BaseCalculo");
+                            write.WriteStartElement("tc", "BaseCalculo");
 
-                                                        write.WriteValue("");//FALTA VALOR
+                            write.WriteValue("");//FALTA VALOR
 
-                                                        write.WriteEndElement();
+                            write.WriteEndElement();
 
-                                                        write.WriteStartElement("tc", "Aliquota");
+                            write.WriteStartElement("tc", "Aliquota");
 
-                                                        write.WriteValue("");//FALTA VALOR
+                            write.WriteValue("");//FALTA VALOR
 
-                                                        write.WriteEndElement();
+                            write.WriteEndElement();
 
-                                                        write.WriteStartElement("tc", "ValorLiquidoNfse");
+                            write.WriteStartElement("tc", "ValorLiquidoNfse");
 
-                                                        write.WriteValue("");//FALTA VALOR
+                            write.WriteValue("");//FALTA VALOR
 
-                                                        write.WriteEndElement();
+                            write.WriteEndElement();
 
-                                                    write.WriteEndElement();//FECHA Valores
+                            write.WriteEndElement();//FECHA Valores
 
-                                                    write.WriteStartElement("tc", "ItemListaServico");
+                            write.WriteStartElement("tc", "ItemListaServico");
 
-                                                    write.WriteValue("");//FALTA VALOR
+                            write.WriteValue("");//FALTA VALOR
 
-                                                    write.WriteEndElement();
+                            write.WriteEndElement();
 
-                                                    write.WriteStartElement("tc", "CodigoCnae");
+                            write.WriteStartElement("tc", "CodigoCnae");
 
-                                                    write.WriteValue("");//FALTA VALOR
+                            write.WriteValue("");//FALTA VALOR
 
-                                                    write.WriteEndElement();
+                            write.WriteEndElement();
 
-                                                    write.WriteStartElement("tc", "CodigoTributacaoMunicipio");
+                            write.WriteStartElement("tc", "CodigoTributacaoMunicipio");
 
-                                                    write.WriteValue("");//FALTA VALOR
+                            write.WriteValue("");//FALTA VALOR
 
-                                                    write.WriteEndElement();
+                            write.WriteEndElement();
 
-                                                    write.WriteStartElement("tc", "Discriminacao");
+                            write.WriteStartElement("tc", "Discriminacao");
 
-                                                    write.WriteValue("");//FALTA VALOR
+                            write.WriteValue("");//FALTA VALOR
 
-                                                    write.WriteEndElement();
+                            write.WriteEndElement();
 
-                                                    write.WriteStartElement("tc", "MunicipioPrestacaoServico");
+                            write.WriteStartElement("tc", "MunicipioPrestacaoServico");
 
-                                                    write.WriteValue("");//FALTA VALOR
+                            write.WriteValue("");//FALTA VALOR
 
-                                                    write.WriteEndElement();
+                            write.WriteEndElement();
 
-                                                write.WriteEndElement();//FECHA Servico
+                            write.WriteEndElement();//FECHA Servico
 
-                                                write.WriteStartElement("tc", "Prestador");
+                            write.WriteStartElement("tc", "Prestador");
 
-                                                    write.WriteStartElement("tc", "CpfCnpj");
+                            write.WriteStartElement("tc", "CpfCnpj");
 
-                                                        write.WriteStartElement("tc", "Cnpj");
+                            write.WriteStartElement("tc", "Cnpj");
 
-                                                        write.WriteValue("");//FALTA VALOR
+                            write.WriteValue("");//FALTA VALOR
 
-                                                        write.WriteEndElement();
+                            write.WriteEndElement();
 
-                                                    write.WriteEndElement();//FECHA CpfCnpj
+                            write.WriteEndElement();//FECHA CpfCnpj
 
-                                                    write.WriteStartElement("tc", "InscricaoMunicipal");
+                            write.WriteStartElement("tc", "InscricaoMunicipal");
 
-                                                    write.WriteValue("");//FALTA VALOR
+                            write.WriteValue("");//FALTA VALOR
 
-                                                    write.WriteEndElement();
+                            write.WriteEndElement();
 
-                                                write.WriteEndElement();//FECHA Prestador
+                            write.WriteEndElement();//FECHA Prestador
 
-                                                write.WriteStartElement("tc", "Tomador");
+                            write.WriteStartElement("tc", "Tomador");
 
-                                                    write.WriteStartElement("tc", "IdentificacaoTomador");
+                            write.WriteStartElement("tc", "IdentificacaoTomador");
 
-                                                        write.WriteStartElement("tc", "CpfCnpj");
+                            write.WriteStartElement("tc", "CpfCnpj");
 
-                                                            write.WriteStartElement("tc", "Cpf");
+                            write.WriteStartElement("tc", "Cpf");
 
-                                                            write.WriteValue("");//FALTA VALOR
+                            write.WriteValue("");//FALTA VALOR
 
-                                                            write.WriteEndElement();
+                            write.WriteEndElement();
 
-                                                        write.WriteEndElement();//FECHA CpfCnpj
+                            write.WriteEndElement();//FECHA CpfCnpj
 
-                                                    write.WriteEndElement();//FECHA IdentificacaoTomador
+                            write.WriteEndElement();//FECHA IdentificacaoTomador
 
-                                                    write.WriteStartElement("tc", "RazaoSocial");
+                            write.WriteStartElement("tc", "RazaoSocial");
 
-                                                    write.WriteValue("");//FALTA VALOR
+                            write.WriteValue("");//FALTA VALOR
 
-                                                    write.WriteEndElement();
+                            write.WriteEndElement();
 
-                                                    write.WriteStartElement("tc", "Endereco");
+                            write.WriteStartElement("tc", "Endereco");
 
-                                                        write.WriteStartElement("tc", "Endereco");
+                            write.WriteStartElement("tc", "Endereco");
 
-                                                        write.WriteValue("");//FALTA VALOR
+                            write.WriteValue("");//FALTA VALOR
 
-                                                        write.WriteEndElement();
+                            write.WriteEndElement();
 
-                                                        write.WriteStartElement("tc", "Numero");
+                            write.WriteStartElement("tc", "Numero");
 
-                                                        write.WriteValue("");//FALTA VALOR
+                            write.WriteValue("");//FALTA VALOR
 
-                                                        write.WriteEndElement();
+                            write.WriteEndElement();
 
-                                                        write.WriteStartElement("tc", "Complemento");
+                            write.WriteStartElement("tc", "Complemento");
 
-                                                        write.WriteValue("");//FALTA VALOR
+                            write.WriteValue("");//FALTA VALOR
 
-                                                        write.WriteEndElement();
+                            write.WriteEndElement();
 
-                                                        write.WriteStartElement("tc", "Bairro");
+                            write.WriteStartElement("tc", "Bairro");
 
-                                                        write.WriteValue("");//FALTA VALOR
+                            write.WriteValue("");//FALTA VALOR
 
-                                                        write.WriteEndElement();
+                            write.WriteEndElement();
 
-                                                        write.WriteStartElement("tc", "Cidade");
+                            write.WriteStartElement("tc", "Cidade");
 
-                                                        write.WriteValue("");//FALTA VALOR
+                            write.WriteValue("");//FALTA VALOR
 
-                                                        write.WriteEndElement();
+                            write.WriteEndElement();
 
-                                                        write.WriteStartElement("tc", "Estado");
+                            write.WriteStartElement("tc", "Estado");
 
-                                                        write.WriteValue("");//FALTA VALOR
+                            write.WriteValue("");//FALTA VALOR
 
-                                                        write.WriteEndElement();
+                            write.WriteEndElement();
 
-                                                        write.WriteStartElement("tc", "Cep");
+                            write.WriteStartElement("tc", "Cep");
 
-                                                        write.WriteValue("");//FALTA VALOR
+                            write.WriteValue("");//FALTA VALOR
 
-                                                        write.WriteEndElement();
+                            write.WriteEndElement();
 
-                                                    write.WriteEndElement();//FECHA Endereco
+                            write.WriteEndElement();//FECHA Endereco
 
-                                                write.WriteEndElement();//FECHA Tomador
+                            write.WriteEndElement();//FECHA Tomador
 
-                                            write.WriteEndElement();//FECHA InfRps
+                            write.WriteEndElement();//FECHA InfRps
 
-                                        write.WriteEndElement();//FECHA Rps
+                            write.WriteEndElement();//FECHA Rps
 
-                                    write.WriteEndElement();//FECHA ListaRps
+                            write.WriteEndElement();//FECHA ListaRps
 
-                                write.WriteEndElement();//FECHA LoteRps
+                            write.WriteEndElement();//FECHA LoteRps
 
                             write.WriteEndElement();//FEHCA EnviarLoteRpsEnvio
 
@@ -4439,9 +4439,9 @@ namespace nota
                             //write.WriteAttributeString("xmlns", "tip", null, "http://www.ginfes.com.br/tipos");
 
                             write.WriteAttributeString("xmlns", "xsi", null, xmlnsxsi);
-                            
+
                             write.WriteAttributeString("xmlns", "xsd", null, xmlnsxsd);
-                            
+
                             write.WriteStartElement("LoteRps", "Lote" + codnf.ToString().PadLeft(5, '0'));
 
                             conta = ct - linhaAt;
@@ -4859,7 +4859,7 @@ namespace nota
             if (reader.HasRows)
             {
 
-                while(reader.Read())
+                while (reader.Read())
                 {
 
                     ret += reader.GetDateTime(0).ToString() + ";" + reader.GetString(1) + ";" + reader.GetInt32(2).ToString() + @"|";
@@ -4879,9 +4879,9 @@ namespace nota
 
             SqlDataReader reader = db.rQuery(query);
 
-            string[] linhas = {};
+            string[] linhas = { };
 
-            if(reader.HasRows)
+            if (reader.HasRows)
             {
 
                 reader.Read();
@@ -4889,7 +4889,7 @@ namespace nota
                 linhas = new string[reader.GetInt32(0)];
 
                 int c = 0;
-                
+
                 query = "SELECT numero_rps, data_rps, valor_servico, deducoes, aliquota, documento, nome, descricao_servico, forma_pagamento, tipo_documento FROM nf_dados WHERE codigo_nf = " + cod_nf + " AND indice <> '1' AND indice <> '9' ORDER BY numero_rps";
 
                 string numero_rps, data_rps, valor_servico, deducoes, aliquota, documento, nome, descricao_servico, forma_pagamento, tpDoc;
@@ -4922,7 +4922,7 @@ namespace nota
                         {
                             documento = Convert.ToUInt64(documento).ToString(@"00\.000\.000\/0000\-00");
                         }
-                        
+
                         linhas[c] = numero_rps + ";" + data_rps + ";" + valor_servico + ";" + deducoes + ";" + aliquota + ";" + documento + ";" + nome + ";" + descricao_servico + ";" + forma_pagamento + ";" + tpDoc;
 
                         c++;
@@ -4930,9 +4930,9 @@ namespace nota
                     }
 
                 }
-            
+
             }
-            
+
             return linhas;
 
         }
@@ -4973,17 +4973,36 @@ namespace nota
 
 
         }
-/* LER ARQUIVO AURY*/
-        
-             public void carrega_aury()
-                {
+        /* LER ARQUIVO AURY*/
+
+        public void carrega_aury()
+        {
             try
-            { 
+            {
                 StreamReader sReaderAury = new StreamReader(@"C:\Users\Svias\source\repos\sisNota\nota\uploads\aury.txt");
                 while (!sReaderAury.EndOfStream)
                 {
                     string linha = sReaderAury.ReadLine();
+                    if (linha.Length == 28)
+                    {
 
+                    }
+                    else if (linha.Length == 782)
+                    {
+                        string nome = linha.Substring(107, 22);
+                        string end = linha.Substring(185, 50);
+                        string num = linha.Substring(235, 7);
+                        string bairro = linha.Substring(275, 25);
+                        string email = linha.Substring(632, 50);
+                        string aula = linha.Substring(440, 25);
+                        string cidade = linha.Substring(512, 20);
+                        string pagamento = linha.Substring(572, 17);
+                        
+                    }
+                    else
+                    {
+
+                    }
                 }
             }
             catch (Exception e)
@@ -4992,15 +5011,15 @@ namespace nota
                 e.ToString();
 
             }
-              
-
-             reader.Close();
-                }
 
 
-
-            }
+            reader.Close();
         }
-        
-    
+
+
+
+    }
+}
+
+
 

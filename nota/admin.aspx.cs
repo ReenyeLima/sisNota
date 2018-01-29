@@ -88,6 +88,10 @@ namespace nota
             }
                 }
 
-            }
+        protected void btConsultaLote_Click(object sender, EventArgs e)
+        {
+            fnc.carrega_aury();
+        }
+    }
         
     }

@@ -5,8 +5,7 @@ using System.Web;
 using System.Xml.Serialization;
 using System.Web.Services;
 using System.Web.Services.Protocols;
-    using System.ComponentModel;
-
+using System.ComponentModel;
 
 namespace nota
 {
@@ -84,7 +83,7 @@ namespace nota
             }
         }
 
-        /// <remarks/>
+        /// <remarks/> -- observaçoes
         public event CancelarNfseCompletedEventHandler CancelarNfseCompleted;
 
         /// <remarks/>
@@ -948,7 +947,3 @@ namespace nota
     }
 }
 
-        
-      
-    }
-}
