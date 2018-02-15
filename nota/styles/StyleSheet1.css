@@ -2,6 +2,7 @@
 * {
     padding: 0%;
     margin: 0%;
+
 }
 body {
     background-color: #eaeef7;
@@ -38,8 +39,8 @@ body {
 
     #nav li ul {
         position: absolute;
-        left: 150;
-        top: 60;
+        left: 150px;
+        top: 60px;
         display: none;
     }
 
@@ -79,22 +80,23 @@ body {
     }
 
 /*fundo da tela com menu View 1*/
+
 #enviararq {
     font-family: 'Josefin Sans', sans-serif;
-    margin-top: 100px;
+    margin-top: 15%;
     width: 100%;
     margin-left: 90%;
     padding: 140px;
     text-align: center;
     background-color: #eaeef7;
     opacity: 0.9;
-    position:relative; 
-}
+    position:relative;
+  }
     
 
 #view {
     position: absolute;
-    
+       
 }
 /*botao upload*/
 .upload-btn-wrapper {
@@ -157,10 +159,10 @@ body {
 /*View 3*/
 #consulta {
     font-family: 'Josefin Sans', sans-serif;
-    margin-top: 120px;
-    width: 900px;
-    margin-left: 400px;
-    padding: 80px;
+    margin-top: 150px;
+    width: 1000px;
+    margin-left: 350px;
+    padding: 100px;
     background-color: #eaeef7;
     opacity: 0.9;
     position: absolute;

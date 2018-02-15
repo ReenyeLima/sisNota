@@ -17,7 +17,7 @@ namespace nota
         private string dbname = "", dbuser = "", dbpass = "";
 
         private string curDir = Path.GetDirectoryName(System.AppDomain.CurrentDomain.BaseDirectory.ToString()) + Path.DirectorySeparatorChar;
-        
+
         public void carrega_cfg()
         {
 
@@ -51,8 +51,9 @@ namespace nota
                 dbname = "false";
 
             }
-                     
+
         }
+
 
         public void dataLog(string info)
         {

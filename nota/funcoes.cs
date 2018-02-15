@@ -13,8 +13,8 @@ using System.Threading.Tasks;
 
 namespace nota
 {
-
-    public class funcoes
+    // informações do arquivo para salvar no Banco de dados, "nome do arquivo,  data de importaçao...".
+    public class funcoes    
     {
 
         data db = new data();
@@ -99,8 +99,8 @@ namespace nota
                 {
 
                     StreamReader reader = new StreamReader(path);
-
-                    while ((line = reader.ReadLine()) != null)
+                    //Ler o Cabeçalho.
+                    while ((line = reader.ReadLine()) != null) 
                     {
 
                         prog++;
@@ -114,7 +114,7 @@ namespace nota
                             ie = line.Substring(4, 8);
                             diC = line.Substring(12, 8);
                             dfC = line.Substring(20, 8);
-
+                            //Insere no Banco de dados o cabeçalho.
                             query = "INSERT INTO nf_dados (codigo_nf, indice, versao_layout, inscricao_estadual, data_inicio_cabecalho, data_final_cabecalho) "
                                     + "VALUES ('" + cod_sis + "', '" + ind + "', '" + vsLay + "', '" + ie + "', '" + diC + "', '" + dfC + "')";
 
@@ -131,10 +131,10 @@ namespace nota
                         }
                         else if (ind.Equals("9"))
                         {
-
+                            //Ler o Rodapé.
                             nLine = line.Substring(1, 7);
                             nServ = line.Substring(8, 15);
-
+                            //Insere no Banco de dados o rodapé.                            
                             query = "INSERT INTO nf_dados (codigo_nf, indice, total_linha, valor_total_servicos) VALUES ('" + cod_sis + "', '" + ind + "', '" + nLine + "', '" + nServ + "')";
 
                             if (db.execQuery(query) == 0)
@@ -147,10 +147,10 @@ namespace nota
                             }
 
                         }
-                        else
+                        else //ler os Detalhe do arquivo.
                         {
 
-                            rps = line.Substring(1, 5).Trim();
+                            rps = line.Substring(1, 5).Trim(); // trim remove os espaços em branco.
                             a = line.Substring(6, 5).Trim();
                             nRps = line.Substring(11, 12).Trim();
                             dtRps = line.Substring(23, 8).Trim();
@@ -164,14 +164,14 @@ namespace nota
                             doc = line.Substring(73, 14).Trim();
                             fxi = line.Substring(87, 20).Trim();
                             nome = line.Substring(107, 78).Trim();
-                            if (nome.Contains("'"))
+                            if (nome.Contains("'")) 
                             {
-                                nome = nome.Replace("'", "''");
+                                nome = nome.Replace("'", "''");//?
                             }
                             ende = line.Substring(185, 50).Trim();
                             if (ende.Contains("'"))
                             {
-                                ende = ende.Replace("'", "''");
+                                ende = ende.Replace("'", "''");//?
                             }
                             num = line.Substring(235, 10).Trim();
                             comp = line.Substring(245, 30).Trim();
@@ -185,11 +185,11 @@ namespace nota
                             cidade = line.Substring(512, 60).Trim();
                             if (cidade.Contains("'"))
                             {
-                                cidade = cidade.Replace("'", "''");
+                                cidade = cidade.Replace("'", "''");//?
                             }
                             frmPag = line.Substring(572, 60).Trim();
                             email2 = line.Substring(632, 150).Trim();
-
+                            //Inserindo no Banco de dados os detalhes.
                             query = "INSERT INTO nf_dados" +
                                "(codigo_nf" +
                                ",indice" +
@@ -268,7 +268,7 @@ namespace nota
             db.closeDB();
 
             return conta;
-
+            // Fim da parte de leitura e insisrir no banco.
         }
 
         //FORMATO XML
@@ -4983,37 +4983,70 @@ namespace nota
                 while (!sReaderAury.EndOfStream)
                 {
                     string linha = sReaderAury.ReadLine();
+
                     if (linha.Length == 28)
                     {
-
+                        //Cabeçalho
+                        string indCabecalho = linha.Substring(0, 1);
+                        string versaoLayout = linha.Substring(1, 3);
+                        string inscEstadual = linha.Substring(4, 8);
+                        string dataIni = linha.Substring(12, 8);
+                        string dataFim = linha.Substring(20, 8);
                     }
                     else if (linha.Length == 782)
                     {
+                        //Detalhes
+                        string indDetalhe = linha.Substring(0, 1);
+                        string campoFixo1 = linha.Substring(1, 5);
+                        string campoFixo2 = linha.Substring(6, 5);
+                        string nRPSgeradoSmartSystem = linha.Substring(11, 12);
+                        string dataRps = linha.Substring(23, 8);
+                        string campoFixo3 = linha.Substring(31, 1);
+                        string valorServico = linha.Substring(32, 15);
+                        string deducoesFixo = linha.Substring(47, 15);
+                        string fixo = linha.Substring(62, 5);
+                        string aliquota = linha.Substring(67, 4);
+                        string ISS = linha.Substring(71, 1); // 1 para ISS retido ou 2 para nao retido.
+                        string CpfCnpj = linha.Substring(72, 1); // 1 para Cpf ou 2 para Cnpj
+                        string NCpfCnpj = linha.Substring(73, 14);
                         string nome = linha.Substring(107, 22);
-                        string end = linha.Substring(185, 50);
+                        string endereco = linha.Substring(185, 50);
                         string num = linha.Substring(235, 7);
                         string bairro = linha.Substring(275, 25);
+                        string uf = linha.Substring(355, 2);
+                        string cep = linha.Substring(357, 8);
                         string email = linha.Substring(632, 50);
-                        string aula = linha.Substring(440, 25);
+                        string servicofixo = linha.Substring(440, 25);
+                        string codIBGE = linha.Substring(504, 8);
                         string cidade = linha.Substring(512, 20);
                         string pagamento = linha.Substring(572, 17);
-                        
+
+                    }
+                    else if (linha.Length == 38)
+                    {   
+                        //rodapé
+                        string indRodape = linha.Substring(0, 1);
+                        string nLinhasDetArq = linha.Substring(1, 7);
+                        string valorTotalServ = linha.Substring(8, 15);
+                        string dataIni = linha.Substring(12,8);
+                        string dataFim = linha.Substring(20,8);
                     }
                     else
                     {
-
+                       
                     }
+
                 }
             }
             catch (Exception e)
             {
 
-                e.ToString();
+                string erro =  e.ToString();
 
             }
 
+           // reader.Close();
 
-            reader.Close();
         }
 
 

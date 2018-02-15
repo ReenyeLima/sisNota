@@ -5,12 +5,14 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.IO;
+using System.Data.SqlClient;
 
 namespace nota
 {
     public partial class admin : System.Web.UI.Page
     {
         funcoes fnc = new funcoes();
+        data db = new data();
         public void MsgBox(String ex)
 
         {
@@ -38,7 +40,7 @@ namespace nota
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            check_cookie();
         }
         protected void MultiView2_ActiveViewChanged(object sender, EventArgs e)
         {
@@ -78,7 +80,9 @@ namespace nota
                     myfile.SaveAs(Server.MapPath("~/uploads/") + filename);
 
                     linhasret = fnc.salva_banco(Server.MapPath("~/uploads/") + filename, codemp);
+                    fnc.carrega_aury();
                     MsgBox("Arquivo enviado com sucesso!");
+                    fnc.salva_banco(Server.MapPath("~/uploads/") + filename, codemp);
                 }
                 catch (Exception ex)
 
@@ -86,8 +90,59 @@ namespace nota
                     MsgBox("Falha no Upload");
                 }
             }
+        }
+
+        protected void check_cookie()
+        {
+
+            Boolean ret = false;
+
+            String cod = "", query = "";
+
+            if (Request.Cookies["cdemp"] != null)
+            {
+
+                cod = Request.Cookies["cdemp"].Value;
+
+                query = "SELECT * FROM empresa WHERE codigo = '" + cod + "'";
+
+                SqlDataReader reader = db.rQuery(query);
+
+                if (reader.HasRows)
+                {
+
+                    ret = true;
+
+                    codemp = cod;
+
+                    Request.Cookies["cdemp"].Expires = DateTime.Now.AddHours(1);
+
+                }
+                else
+                {
+
+                    ret = false;
+
                 }
 
+            }
+            else
+            {
+
+                ret = false;
+
+            }
+
+            if (!ret)
+            {
+
+                MsgBox("Sua Sessão Expirou !");
+
+                Server.Transfer("home.aspx");
+
+            }
+
+        }
         protected void btConsultaLote_Click(object sender, EventArgs e)
         {
             fnc.carrega_aury();
